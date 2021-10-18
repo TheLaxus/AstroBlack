@@ -119,7 +119,7 @@ $Template->AddTemplate('others', 'head');
                             }
                         } else {
                             ?>
-                            <h4 class="bold text-right">Sem campanhas</h4>
+                            <h4 class="bold">Sem campanhas</h4>
                             <h5>Vish, parece que não á nenhuma campanha ativa neste momento.</h5>
                         <?php } ?>
 					</div>
@@ -155,14 +155,16 @@ $Template->AddTemplate('others', 'head');
 										<div style="clear: both"></div>
 										</div>
 										<div style="clear: both"></div>
-								</div>
+								
+								<div style="clear: both"></div>
 								<div style="clear: both"></div>
 								<?php } ?>
-								<div style="clear: both"></div>
 								</div>
-								<div style="clear: both"></div>
 					</div>
-					<div style="clear: both"></div>
+				</div>
+								
+					</div>
+					
 				</div>
 			</div>
 
