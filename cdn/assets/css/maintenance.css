@@ -1,0 +1,128 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900|Roboto:300,400,500,700,900";
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap-grid.css";
+
+
+*,
+*:before,
+*:after  {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: "Poppins", "Roboto", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+a:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+html,
+body {
+	background: #Fff;
+	min-width: 300px;
+	width: 100%;
+	height: 100%;
+	color: #152038;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	height: 100%;
+}
+
+.maintenance-container {
+	position: relative;
+	max-width: 650px;
+	height: fit-content;
+	border-radius: 5px;
+	margin: auto;
+}
+
+.maintenance-container > .image {
+	position: relative;
+	background: url('../img/maintenance.png');
+	min-width: 256px;
+	height: 224px;
+	margin: 0 10px 0 0;
+}
+
+button.staff-login {
+	position: relative;
+	background: #ffca00;
+	width: 100%;
+	color: #fff;
+	border: unset;
+	border-radius: 5px;
+	padding: 15px;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.modal-area:before {
+	content: "";
+	position: absolute;
+	background: #000000a1;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.modal-area {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+
+.modal {
+    position: relative;
+    background: #292929;
+    width: 400px;
+    border-radius: 5px;
+    padding: 20px;
+    margin: auto;
+}
+
+.login-staff {}
+
+.login-staff input {
+	position: relative;
+    background: #f7f7f7;
+    border: 2px solid #eaeaea;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.errors-area {
+	position: relative;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.error-box {
+	position: relative;
+	background: #ff6359;
+	border-radius: 5px;
+	padding: 15px;
+	margin: 0 0 15px 0;
+}
+
+button:hover {
+	cursor: pointer;
+}

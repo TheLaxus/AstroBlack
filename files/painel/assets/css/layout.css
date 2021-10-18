@@ -1,0 +1,68 @@
+@media (max-width: 1669px) {
+	.card-columns.my-articles {
+		-webkit-column-count: 3;
+		-moz-column-count: 3;
+		column-count: 3;
+	}
+}
+
+@media (max-width: 1328px) {
+	.card-columns.my-articles {
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		column-count: 2;
+	}
+}
+
+@media (max-width: 1000px) {
+	.content {
+		margin-left: 0px;
+	}
+
+	.sideBar {
+		margin-left: -250px;
+	}
+
+	.sideBar.active {
+		margin-left: 0px;
+	}
+
+	.sideBar-overlay {
+		position: fixed;
+		background: #00000061;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.sideBar-controller {
+		left: 0;
+		margin: auto 15px auto 0px;
+	}
+}
+
+@media (max-width: 722px) {
+	.my-article-box.card .my-article-box-actions {
+		flex-direction: column;
+	}
+
+	.my-article-box.card .my-article-box-actions button,
+	.my-article-box.card .my-article-box-actions a {
+		width: 100%;
+		text-align: center;
+	}
+
+	.my-article-box.card .my-article-box-actions > .mr-auto-left {
+		width: 100%;
+		margin-top: 5px;
+	}
+}
+
+@media (max-width: 500px) {
+	.card-columns.my-articles {
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		column-count: 1;
+	}
+}

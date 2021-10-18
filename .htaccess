@@ -1,0 +1,62 @@
+RewriteEngine On
+
+RewriteRule ^maintenance(|/)$ files/cms/index/maintenance.php
+
+RewriteRule ^(|/)$ files/cms/index/index.php
+RewriteRule ^index(|/)$ files/cms/index/index.php
+RewriteRule ^register(|/)$ files/cms/index/register.php
+RewriteRule ^logout(|/)$ files/cms/others/logout.php
+
+RewriteRule ^me(|/)$ files/cms/me/me.php
+RewriteRule ^preferencias/email(|/)$ files/cms/me/settings_email.php
+RewriteRule ^preferencias/password(|/)$ files/cms/me/settings_password.php
+RewriteRule ^preferencias(|/)$ files/cms/me/settings_others.php
+RewriteRule ^article(|/)$ files/cms/articles/article.php
+
+RewriteRule ^client(|/)$ files/cms/client/index.php
+RewriteRule ^comunidade(|/)$ files/cms/community/community.php
+RewriteRule ^comunidade/equipe(|/)$ files/cms/community/staff.php
+RewriteRule ^comunidade/hall(|/)$ files/cms/community/fama.php
+
+RewriteRule ^article/(..*)(|/)$ files/cms/articles/article.php?article_id=$1
+RewriteRule ^article(|/)$ files/cms/articles/article.php
+RewriteRule ^articles(|/)$ files/cms/articles/article.php
+
+
+# Regras do Painel
+
+RewriteRule ^panel/logout(|/)$ files/painel/logout.php
+RewriteRule ^panel(|/)$ files/painel/files/navigation/index.php
+RewriteRule ^panel/index(|/)$ files/painel/files/navigation/index.php
+
+RewriteRule ^panel/home(|/)$ files/painel/files/navigation/home.php
+RewriteRule ^panel/news-forms(|/)$ files/painel/files/navigation/news-forms.php
+RewriteRule ^panel/article/create(|/)$ files/painel/files/navigation/create-article.php
+RewriteRule ^panel/article/(..*)/edit(|/)$ files/painel/files/navigation/edit-article.php?article_id=$1
+RewriteRule ^panel/articles/(..*)(|/)$ files/painel/files/navigation/articles.php?user=$1
+RewriteRule ^panel/host-badge(|/)$ files/painel/files/navigation/host-badge.php
+RewriteRule ^panel/hall-points(|/)$ files/painel/files/navigation/hall-points.php
+RewriteRule ^panel/bans(|/)$ files/painel/files/navigation/bans.php
+RewriteRule ^panel/add-pin(|/)$ files/painel/files/navigation/add-pin.php
+RewriteRule ^panel/give-rank(|/)$ files/painel/files/navigation/give-rank.php
+RewriteRule ^panel/add-furniture(|/)$ files/painel/files/navigation/add-furni.php
+RewriteRule ^panel/create-page(|/)$ files/painel/files/navigation/create-page.php
+RewriteRule ^panel/campaigns/(..*)(|/)$ files/painel/files/navigation/campaigns.php?user=$1
+RewriteRule ^panel/campaign/(..*)/edit(|/)$ files/painel/files/navigation/edit-campaign.php?article_id=$1
+RewriteRule ^panel/create-page/delete/([a-zA-Z0-9_-]+)(|/)$ api/actions/deletePage.php?delete=$1
+RewriteRule ^panel/edit-user(|/)$ files/painel/files/navigation/edit-user.php
+RewriteRule ^panel/user/([.,a-zA-Z0-9_-]+)(|/)$ files/painel/files/navigation/user.php?user=$1
+RewriteRule ^panel/send-vip(|/)$ files/painel/files/navigation/send-vip.php
+
+ErrorDocument 404 /files/cms/others/error.php
+
+# API
+
+RewriteRule ^api/login(|/)$ api/actions/login.php
+RewriteRule ^api/register(|/)$ api/actions/register.php
+RewriteRule ^api/reaction(|/)$ api/actions/reaction.php
+RewriteRule ^api/panel(|/)$ api/panel.php
+RewriteRule ^tags/delete/([a-zA-Z0-9_-]+)(|/)$ api/actions/deleteTags.php?delete=$1
+RewriteRule ^api/client(|/)$ api/actions/client.php
+RewriteRule ^api/form(|/)$ api/actions/form.php
+RewriteRule ^api/badge(|/)$ api/actions/badge.php
