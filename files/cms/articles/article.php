@@ -200,13 +200,31 @@
                 </div>
             </div>
         </div>
+
+		<style>
+			.branco {
+  background-image: linear-gradient(to top, rgba(27,27,27,1) 30%,rgba(27,27,27,0.4) 99%);
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  z-index: 0;
+  top:0px
+}
+
+a {
+	color:#ccc;
+}
+</style>
         <div class="col-8">
             <div id="content-box">
+			<div class="news-article show" style="background-image:url(<?= $result_article['image']; ?>);height:70px">
+						<div class="branco"></div>
                 <div class="title-box png20">
                     <div class="title"><?= $result_article['title']; ?></div>
                     <div class="desc">Publicado em <?= utf8_encode(strftime('%d de %B de %Y', $result_article['timestamp'])); ?></b> às <b><?= utf8_encode(strftime('%H:%M', $result_article['timestamp'])); ?></b> na categoria <a href=""><b><?= $result_article['category']; ?></b></a>.<p>
 					<?= $result_article['subtitle']; ?></div>
                 </div>
+				</div>
                 <div class="png20">
 					<div style="overflow-wrap: break-word;">
 				<?= $result_article['body']; ?></div><p><br>
