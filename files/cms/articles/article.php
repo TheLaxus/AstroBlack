@@ -208,9 +208,9 @@
 					<?= $result_article['subtitle']; ?></div>
                 </div>
                 <div class="png20">
-				<?= $result_article['body']; ?><p><br>
-
-				
+					<div style="overflow-wrap: break-word;">
+				<?= $result_article['body']; ?></div><p><br>
+						
 				<?php if (!empty($result_article['badge']) && $result_article['use_badge'] == 1 && file_exists(PATH_BADGEIMAGE . '/' . $result_article['badge'] . '.gif')) { ?>
 					<a class="btn purple big check-in-header next-register" id="modal-open-badge" data-modal="article-badge-free" style="position:relative; z-index:999; top:0px;float:right; box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);">Pegar emblema</a>
 	
@@ -276,24 +276,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
 
 	<?php if ($result_article['form'] == 1) { ?>
 	<div class="modal-container" data-modal="form-article-modal">
