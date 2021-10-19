@@ -9944,3 +9944,18 @@ input[type=text]::placeholder, input[type=email]::placeholder, input[type=passwo
   width: 54px;
 }
 
+.logo {
+  background: url(../img/logo.png) no-repeat;
+  width: 201px; 
+  height: 89px;  
+  margin-top: -90px; 
+  margin-left: -0px;
+  position: absolute;
+}
+
+.social-main {
+  position: absolute;
+  top:-55px;
+  left:170px
+}
+
