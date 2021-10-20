@@ -35,10 +35,10 @@ if ($Hotel::Manutention('state') == 'disabled') {
 				</div>
 			</div>
 			<div class="social-main">
-				<a href="https://twitter.com/hp_lella" target="_blank"><img src="https://cliply.co/wp-content/uploads/2019/07/371907030_TWITTER_ICON_1080.png" title="Siga nosso twitter!" style="position:absolute;width:37px; margin-left:10px;top:-4px"></a>
-				<a href="https://discord.gg/WnRdQqD7zb" target="_blank"><img src="https://logosmarcas.net/wp-content/uploads/2020/12/Discord-Emblema.png" title="Entre no nosso Discord!" style="position:absolute;width:52px; margin-left:26px;"></a>
-				<a href="https://facebook.com/equipecrazzy" target="_blank"><img src="https://logopng.com.br/logos/facebook-13.png" title="Siga nosso Facebook!" style="position:absolute;width:28px; margin-left:59px;"></a>
-				<a href="https://www.instagram.com/hplella/" target="_blank"><img src="https://assets.itpacporto.edu.br/arquivos/2019/ninter/instagram.png" title="Siga nosso instagram!" style="position:relative;width:29px; margin-left:81px;"></a>
+				<a href="https://twitter.com/hp_lella" target="_blank"><img src="<?= CDN; ?>/assets/img/tt.png" title="Siga nosso twitter!" style="position:absolute;width:37px; margin-left:10px;top:-4px"></a>
+				<a href="https://discord.gg/WnRdQqD7zb" target="_blank"><img src="<?= CDN; ?>/assets/img/dc.png" title="Entre no nosso Discord!" style="position:absolute;width:52px; margin-left:26px;"></a>
+				<a href="https://facebook.com/equipecrazzy" target="_blank"><img src="<?= CDN; ?>/assets/img/fb.png" title="Siga nosso Facebook!" style="position:absolute;width:28px; margin-left:59px;"></a>
+				<a href="https://www.instagram.com/hplella/" target="_blank"><img src="<?= CDN; ?>/assets/img/insta.png" title="Siga nosso instagram!" style="position:relative;width:29px; margin-left:81px;"></a>
 			</div>
 
 			<div id="counter-main">
