@@ -12,6 +12,10 @@ $Template->SetParam('page_image', URL . '/image.png');
 
 $Template->AddTemplate('others', 'head');
 ?>
+    <script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
+
+    <script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
+
 <div class="container">
 		<div class="row">
         <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
@@ -19,27 +23,31 @@ $Template->AddTemplate('others', 'head');
 
         
         <div class="col-8">
-        <div class="alert success">Configurações salvas com sucesso!</div>
-
+        <form method="post" class="form-change-email">
+        <div class="form-warns"></div>
             <div id="content-box" style="height:390px">
                 <div class="title-box png20">
                     <div class="title">CONFIGURAÇÕES DE E-MAIL</div>
                 </div>
 
                 <div class="png20">
-                <?php User::editSettingsAccount() ?>
-                    <form action="" method="post">
-                    <label for="old-mail">E-mail atual</label>
-                    <input type="email" size="32" maxlength="32" name="currentemail" value="<?= User::userData('email'); ?>" class="currentemail " required/>
-                <div class="desc" style="margin: 0 0 20px 0">Escreva o e-mail que esta atualmente em uso na sua conta</div>
-                <div class="line"></div>
+                        
+                    <label for="old-mail">Senha atual</label>
+                    <div class="col-input-separator flex-column mr-top-none flex margin-bottom-minm">
+                        <input type="password" name="currentPassword" class="currentpassword" autocomplete="off" required/>
+                        <div class="error-input-warn"></div>
+                        <div class="desc" style="margin: 0 0 20px 0">Digite sua senha esta atualmente em uso na sua conta</div>
+                    </div>
+                
+                    <div class="line"></div>
 
-                <label for="new-mail">Novo E-mail</label>
-                <input type="email" name="email" id="email" size="32" maxlength="48" required/>
-                <div class="desc">Utilize um e-mail que você use verdadeiramente!</div>
-
-                <input type="submit" class="btn purple save" name="saveEmail" value="Salvar configurações" id="add-tag-button"></input>
-                                        
+                <label for="new-mail">Novo e-mail</label>
+                <div class="col-input-separator flex-column mr-top-none flex margin-bottom-minm">
+                    <input type="email" name="email" id="email" size="32" maxlength="48" required autocomplete="off"/>
+                    <div class="error-input-warn"></div>
+                    <div class="desc">Utilize um e-mail que você use verdadeiramente!</div>
+                </div>
+                        <button type="submit" class="btn purple save" style="padding:10px">Salvar prefências</button>                                        
                     </form>
                 </div>
             </div>

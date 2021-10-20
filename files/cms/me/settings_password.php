@@ -12,6 +12,9 @@ $Template->SetParam('page_image', URL . '/image.png');
 
 $Template->AddTemplate('others', 'head');
 ?>
+    <script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
+
+    <script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
 <div class="container">
 		<div class="row">
         <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
@@ -19,7 +22,9 @@ $Template->AddTemplate('others', 'head');
 
         
         <div class="col-8">
-        <div class="alert success">Configurações salvas com sucesso!</div>
+        <form method="post" class="form-change-password">
+        <div class="form-warns"></div>
+
 
             <div id="content-box" style="height:390px">
                 <div class="title-box png20">
@@ -27,18 +32,23 @@ $Template->AddTemplate('others', 'head');
                 </div>
 
                 <div class="png20">
-                <?php User::editSettingsAccount() ?>
-                    <form action="" method="post">
                     <label for="old-mail">Senha atual</label>
-                    <input type="password" size="32" maxlength="32" name="currentpassword" id="currentpassword" class="currentpassword " />
+                <div class="col-input-separator flex-column mr-top-none flex margin-bottom-minm">
+                    <input type="password" name="currentpassword" id="currentpassword" class="currentpassword " placeholder="********"/>
+                    <div class="error-input-warn"></div>
                     <div class="desc" style="margin: 0 0 20px 0">Escreva senha usada na conta atualmente</div>
-                <div class="line"></div>
+                </div>
+                    <div class="line"></div>
 
                 <label for="new-mail">Nova senha</label>
-                <input type="password" name="password" id="password" size="32" maxlength="48" value="" />
-                <div class="desc">Utilize uma senha grande e segura, nunca passe ela a niguém!</div>
+                <div class="col-input-separator flex-column mr-top-none flex margin-bottom-minm">
+                    <input type="password" name="password" id="password" placeholder="********"/>
+                    <div class="error-input-warn"></div>
+                    <div class="desc">Utilize uma senha grande e segura, nunca passe ela a niguém! Minímo 6 caracteres.</div>
+                </div>
 
-                <input type="submit" class="btn purple save" name="savePassword" value="Salvar configurações" id="add-tag-button"></input>
+                
+                <button type="submit" class="btn purple save" style="padding:10px">Salvar prefências</button>                                        
                     </form>
                 </div>
             </div>

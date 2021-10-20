@@ -12,6 +12,10 @@ $Template->SetParam('page_image', URL . '/image.png');
 
 $Template->AddTemplate('others', 'head');
 ?>
+        <script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
+
+        <script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
+
 <div class="container">
 		<div class="row">
         <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
@@ -25,8 +29,10 @@ $Template->AddTemplate('others', 'head');
   display: inline-block;
 }
 </style>
+
         <div class="col-8">
-            <div class="alert success">Configurações salvas com sucesso!</div>
+        <form method="post" class="form-others-settings">
+        <div class="form-warns"></div>
 
             <div id="content-box" style="height:890px">
                 <div class="title-box png20">
@@ -35,13 +41,12 @@ $Template->AddTemplate('others', 'head');
 
                 <div class="png20">
                 <?php
-                             User::editSettingsAccount();
-                            
-                             $userData = $db->prepare("SELECT allow_friend_requests,hide_online,hide_last_online,allow_follow,allow_mimic,allow_trade,disable_whisper,allow_sex FROM player_settings WHERE player_id = ?");
-                             $userData->bindValue(1, User::userData('id'));
-                             $userData->execute();
 
-                             $data = $userData->fetch(PDO::FETCH_ASSOC);
+
+                            $usersettings = $db->prepare('SELECT allow_friend_requests, hide_online, hide_last_online, allow_mimic, allow_follow, allow_trade, disable_whisper, allow_sex FROM player_settings WHERE player_id = ?');
+                            $usersettings->bindValue(1, User::userData('id'));
+                            $usersettings->execute();
+                            $usersetting = $usersettings->fetch();
 
                              
                              $clientFPS = $db->prepare("SELECT * FROM cms_clients WHERE user_id = ?");
@@ -50,11 +55,14 @@ $Template->AddTemplate('others', 'head');
                              $showFPS = $clientFPS->fetch(PDO::FETCH_ASSOC);
                             ?>
 
-                            <form method="post">
                     <label for="old-mail">Missão</label>
-                <input type="text" name="motto" size="32" maxlength="32" value="<?= Functions::Filter('XSS', User::userData('motto')); ?>" id="avatarmotto">
-                <div class="desc" style="margin: 0 0 20px 0">Sua missão atual que aparecerá no seu perfil.</div>
-                <div class="line"></div>
+                    <div class="col-input-separator flex-column mr-top-none flex margin-bottom-minm">
+                        <input type="text" name="motto" size="40" maxlength="40" value="<?= Functions::Filter('XSS', User::userData('motto')); ?>" id="avatarmotto">
+                        <div class="error-input-warn"></div>
+                        <div class="desc" style="margin: 0 0 20px 0">Sua missão atual que aparecerá no seu perfil.</div>
+                    </div>
+
+                    <div class="line"></div>
 
                 <label>Veersão da client</label>
                         <div class="desc">Escolha conforme a sua performance do PC</div>
@@ -68,46 +76,47 @@ $Template->AddTemplate('others', 'head');
                         <label>Estado online?</label>
                         <div class="desc">Permitir que outros usuários vejam quando você estiver online? </div>
                         <div class="optionset">
-                        <input type="checkbox" name="hideonline" <?= $data['hide_online'] == '0' ? 'checked' : '' ?> data-toggle="toggle" data-size="sm">    
+                        <input type="checkbox" name="online" <?= $usersetting['hide_online'] == '0' ? 'checked' : '' ?> data-toggle="toggle" data-size="sm">
                        </div>
 
                         <label>Último login</label>
                         <div class="desc">Permitir que outros usuários vejam a última vez que você entrou no hotel?</div>
                         <div class="optionset">
-                        <input type="checkbox" name="lastonline" <?= $data['hide_last_online'] == '0' ? 'checked' : '' ?> data-toggle="toggle" data-size="sm">   
+                        <input type="checkbox" name="last_online" <?= $usersetting['hide_last_online'] == '0' ? 'checked' : '' ?> value="<?= $usersetting['hide_last_online']?>" data-toggle="toggle" data-size="sm">
                         </div>
+
 
                         <label>Opção de seguir</label>
                         <div class="desc">Todos podem seguir?</div>
                         <div class="optionset">
-                        <input type="checkbox" name="seguir" <?= $data['allow_follow'] == '1' ? 'checked' : '' ?>>
+                        <input type="checkbox" name="seguir" <?= $usersetting['allow_follow'] == '1' ? 'checked' : '' ?> data-toggle="toggle" data-size="sm">
                         </div>
 
                         <label>Copiar visual</label>
                         <div class="desc">Permitir que outros usuários possam copiar o seu visual? (comando <i>:copy</i>)</div>
                         <div class="optionset">
-                        <input type="checkbox" name="copiar" <?= $data['allow_mimic'] == '1' ? 'checked' : '' ?>>     
+                        <input type="checkbox" name="copy" <?= $usersetting['allow_mimic'] == '1' ? 'checked' : '' ?> data-toggle="toggle" data-size="sm">
                         </div>
 
                         <label>Negociações</label>
                         <div class="desc">Permitir que outros usuários possam negociar com você?</div>
                         <div class="optionset">
-                        <input type="checkbox" name="negociar" <?= $data['allow_trade'] == '1' ? 'checked' : '' ?>>
+                        <input type="checkbox" name="trade" <?= $usersetting['allow_trade'] == '1' ? 'checked' : '' ?> data-toggle="toggle" data-size="sm">
                         </div>
 
                         <label>Sussurros</label>
                         <div class="desc">Permitir que outros usuários sussurrem com você?</div>
                         <div class="optionset">
-                        <input type="checkbox" name="sussurrar" <?= $data['disable_whisper'] == '0' ? 'checked' : '' ?>>
+                        <input type="checkbox" name="sussurros" <?= $usersetting['disable_whisper'] == '0' ? 'checked' : '' ?> data-toggle="toggle" data-size="sm">
                         </div>
 
                         <label>Sexo</label>
                         <div class="desc">Permitir que outros usuários usem o comando <i>:sexo</i> com você?</div>
                         <div class="optionset">
-                        <input type="checkbox" name="sexo" <?= $data['allow_sex'] == '1' ? 'checked' : '' ?>>
+                        <input type="checkbox" name="allow_sex" <?= $usersetting['allow_sex'] == '1' ? 'checked' : '' ?> data-toggle="toggle" data-size="sm">
                                 
                         </div>
-                        <input type="submit" class="btn purple save" name="settings-account" value="Salvar Preferências"></input>
+                        <button type="submit" class="btn purple save" style="padding:10px">Salvar prefências</button>
                     </form>
                 </div>
             </div>
@@ -147,11 +156,6 @@ $Template->AddTemplate('others', 'head');
                 <div class="clear"></div>
             </a>
         </div>
-
-
-
-
-
 
 
 

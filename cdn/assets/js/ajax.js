@@ -361,3 +361,175 @@ $(document).on('click', '.article-content-react > button', function() {
 	});
 });
 
+
+$(document).on('submit', 'form.form-others-settings', function(e) {
+	var form = $(this),
+	lastButton = form.find('button[type="submit"]').html(),
+	data = {
+		order: 'settings/account',
+		motto: form.find('input[name="motto"]').val(),
+		version: form.find('select[name="version"]').val(),
+		hideonline: form.find('input[name="online"]:checked').toArray().map(function(check) { 
+			return $(check).val(); 
+		}),
+		lastOnline: form.find('input[name="last_online"]:checked').toArray().map(function(check) { 
+			return $(check).val(); 
+		}),
+		seguir: form.find('input[name="seguir"]:checked').toArray().map(function(check) { 
+			return $(check).val(); 
+		}),
+		copiar: form.find('input[name="copy"]:checked').toArray().map(function(check) { 
+			return $(check).val(); 
+		}),
+		negociar: form.find('input[name="trade"]:checked').toArray().map(function(check) { 
+			return $(check).val(); 
+		}),
+		sussurrar: form.find('input[name="sussurros"]:checked').toArray().map(function(check) { 
+			return $(check).val(); 
+		}),
+		sexo: form.find('input[name="allow_sex"]:checked').toArray().map(function(check) { 
+			return $(check).val(); 
+		}),
+	}
+
+	$.ajax({
+
+		url: '/api/settings',
+		type: 'POST',
+		data: data,
+		beforeSend: function() {
+			form.find('.form-warns').empty();
+			form.find('.error-input').removeClass('error-input');
+			form.find('.error-input-warn').empty();
+
+			form.find('button[type="submit"]').attr('disabled', 'disabled');
+			form.find('button[type="submit"]').html('<div class="loader-button"></div>');
+		},
+		dataType: 'json',
+		success: function(data) {
+			if (data['response'] == 'success') {
+
+				form.find('.form-warns').html(data['append']).hide().slideDown(700);
+
+				window.scrollTo(0,0);
+
+			} else {
+				form.find(data['input']).addClass('error-input');
+
+				if (data['error']) {
+					form.find(data['error']['class']).html(data['error']['text']);
+				}
+			}
+
+			setTimeout(function() {
+				form.find('button[type="submit"]').removeAttr('disabled', 'disabled');
+				form.find('button[type="submit"]').html(lastButton);
+			}, 500);
+		}
+	});
+
+	return false;
+});
+
+
+$(document).on('submit', 'form.form-change-email', function(e) {
+	var form = $(this),
+	lastButton = form.find('button[type="submit"]').html(),
+	data = {
+		order: 'settings/email',
+		password: form.find('input[name="currentPassword"]').val(),
+		email: form.find('input[name="email"]').val()
+	}
+
+	$.ajax({
+
+		url: '/api/settings',
+		type: 'POST',
+		data: data,
+		beforeSend: function() {
+			form.find('.form-warns').empty();
+			form.find('.error-input').removeClass('error-input');
+			form.find('.error-input-warn').empty();
+
+			form.find('button[type="submit"]').attr('disabled', 'disabled');
+			form.find('button[type="submit"]').html('<div class="loader-button"></div>');
+		},
+		dataType: 'json',
+		success: function(data) {
+			if (data['response'] == 'success') {
+
+				form.find('.form-warns').html(data['append']).hide().slideDown(700);
+
+
+				window.scrollTo(0,0);
+
+			} else {
+				form.find(data['input']).addClass('error-input');
+
+				if (data['error']) {
+					form.find(data['error']['class']).html(data['error']['text']);
+				}
+			}
+
+			setTimeout(function() {
+				form.find('button[type="submit"]').removeAttr('disabled', 'disabled');
+				form.find('button[type="submit"]').html(lastButton);
+			}, 500);
+		}
+	});
+
+	return false;
+});
+
+$(document).on('submit', 'form.form-change-password', function(e) {
+	var form = $(this),
+	lastButton = form.find('button[type="submit"]').html(),
+	data = {
+		order: 'settings/password',
+		currentpassword: form.find('input[name="currentpassword"]').val(),
+		new_password: form.find('input[name="password"]').val()
+	}
+
+	$.ajax({
+
+		url: '/api/settings',
+		type: 'POST',
+		data: data,
+		beforeSend: function() {
+			form.find('.form-warns').empty();
+			form.find('.error-input').removeClass('error-input');
+			form.find('.error-input-warn').empty();
+
+			form.find('button[type="submit"]').attr('disabled', 'disabled');
+			form.find('button[type="submit"]').html('<div class="loader-button"></div>');
+		},
+		dataType: 'json',
+		success: function(data) {
+			if (data['response'] == 'success') {
+
+				form.find('.form-warns').html(data['append']).hide().slideDown(700);
+
+
+				window.scrollTo(0,0);
+
+				setTimeout(function () {    
+					window.location = window.location.href; 
+				}, 5000); // 5 seconds
+
+			} else {
+				form.find(data['input']).addClass('error-input');
+
+				if (data['error']) {
+					form.find(data['error']['class']).html(data['error']['text']);
+				}
+			}
+
+			setTimeout(function() {
+				form.find('button[type="submit"]').removeAttr('disabled', 'disabled');
+				form.find('button[type="submit"]').html(lastButton);
+			}, 500);
+		}
+	});
+
+	return false;
+});

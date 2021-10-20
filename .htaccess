@@ -60,3 +60,4 @@ RewriteRule ^tags/delete/([a-zA-Z0-9_-]+)(|/)$ api/actions/deleteTags.php?delete
 RewriteRule ^api/client(|/)$ api/actions/client.php
 RewriteRule ^api/form(|/)$ api/actions/form.php
 RewriteRule ^api/badge(|/)$ api/actions/badge.php
+RewriteRule ^api/settings(|/)$ api/actions/settings.php
