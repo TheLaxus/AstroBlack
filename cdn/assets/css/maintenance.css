@@ -126,3 +126,45 @@ button.staff-login {
 button:hover {
 	cursor: pointer;
 }
+
+#counter-main {
+	position: relative;
+	color: white;
+	justify-content: center;
+	top: 198px;
+	border-radius: 4px;
+	display: flex;
+}
+
+#counter-column {
+	float: left;
+	width: 25%;
+	font-size: 15px;
+	height: 50px;
+	padding: 14px;
+}
+
+#counter-main:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+#counter-main #counter-column:nth-child(2n+1) {
+	background: rgb(15, 15, 15) !important;
+}
+
+#counter-main #counter-column:nth-child(2n) {
+	background: rgb(15, 15, 15) !important;
+}
+
+@media (max-width: 600px) {
+	#counter-column {
+		width: 100%;
+	}
+}
+
+#counter-main span {
+	display: none;
+	font-weight: bold;
+}
