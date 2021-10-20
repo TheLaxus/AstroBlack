@@ -142,6 +142,7 @@ button:hover {
 	font-size: 15px;
 	height: 50px;
 	padding: 14px;
+	padding-left: 80px;
 }
 
 #counter-main:after {
