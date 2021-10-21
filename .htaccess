@@ -8,15 +8,15 @@ RewriteRule ^register(|/)$ files/cms/index/register.php
 RewriteRule ^logout(|/)$ files/cms/others/logout.php
 
 RewriteRule ^me(|/)$ files/cms/me/me.php
-RewriteRule ^preferencias/email(|/)$ files/cms/me/settings_email.php
-RewriteRule ^preferencias/password(|/)$ files/cms/me/settings_password.php
-RewriteRule ^preferencias(|/)$ files/cms/me/settings_others.php
+RewriteRule ^settings/email(|/)$ files/cms/me/settings_email.php
+RewriteRule ^settings/password(|/)$ files/cms/me/settings_password.php
+RewriteRule ^settings(|/)$ files/cms/me/settings_others.php
 RewriteRule ^article(|/)$ files/cms/articles/article.php
 
 RewriteRule ^client(|/)$ files/cms/client/index.php
-RewriteRule ^comunidade(|/)$ files/cms/community/community.php
-RewriteRule ^comunidade/equipe(|/)$ files/cms/community/staff.php
-RewriteRule ^comunidade/hall(|/)$ files/cms/community/fama.php
+RewriteRule ^community(|/)$ files/cms/community/community.php
+RewriteRule ^community/staff(|/)$ files/cms/community/staff.php
+RewriteRule ^hall(|/)$ files/cms/community/fama.php
 
 RewriteRule ^article/(..*)(|/)$ files/cms/articles/article.php?article_id=$1
 RewriteRule ^article(|/)$ files/cms/articles/article.php

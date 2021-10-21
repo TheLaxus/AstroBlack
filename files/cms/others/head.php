@@ -72,13 +72,13 @@
 					<ul class="user-menu">
 					<?php if(isset($_SESSION['username'])) { ?>
 						<li>
-							<a href="me.php">
+							<a href="me">
 							<?= USERNAME; ?><span><i class="far fa-angle-down"></i></span>
 							</a>
 
 							<ul class="user-subnavi">
 								<li><a href="/perfil">Meu perfil</a></li>
-								<li><a href="/preferencias">Configurações</a></li>
+								<li><a href="/settings">Configurações</a></li>
 								<li><a href="/logout" class="logout">Sair da conta</a></li>
 							</ul>
 						</li>
@@ -98,16 +98,16 @@
 				<div class="col-6">
 					<ul class="navigation">
 						<li>
-							<a href="/comunidade">Comunidade<span><i class="far fa-angle-down"></i></span></a>
+							<a href="/community">Comunidade<span><i class="far fa-angle-down"></i></span></a>
 
 							<ul class="subnavi">
-								<li><a href="/comunidade/equipe">Equipe</a></li>
-								<li><a href="/comunidade/colaboradores">Colaboradores</a></li>
-								<li><a href="/comunidade/etiqueta">Lella Etiqueta</a></li>
+								<li><a href="/community/staff">Equipe</a></li>
+								<li><a href="/community/colaboradores">Colaboradores</a></li>
+								<li><a href="/community/etiqueta">Lella Etiqueta</a></li>
 							</ul>
 						</li>
 						<li>
-							<a href="/comunidade/hall">Hall Da Fama</a>
+							<a href="/hall">Hall Da Fama</a>
 
 						
 						</li>

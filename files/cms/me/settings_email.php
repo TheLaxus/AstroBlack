@@ -54,7 +54,7 @@ $Template->AddTemplate('others', 'head');
         </div>
 
         <div class="col-4">
-            <a href="/preferencias" id="settings-navigation-box">
+            <a href="/settings" id="settings-navigation-box">
                 <div class="png20">
                     <i class="far fa-cog icon"></i>
                     <div class="settings-title">CONFIGURAÇÕES DE PRIVACIDADE</div>
@@ -62,7 +62,7 @@ $Template->AddTemplate('others', 'head');
                 </div>
                 <div class="clear"></div>
             </a>
-            <a href="/preferencias/email" id="settings-navigation-box" class="selected">
+            <a href="/settings/email" id="settings-navigation-box" class="selected">
                 <div class="png20">
                     <i class="far fa-envelope icon"></i>
                     <div class="settings-title">CONFIGURAÇÕES DE E-MAIL</div>
@@ -70,7 +70,7 @@ $Template->AddTemplate('others', 'head');
                 </div>
                 <div class="clear"></div>
             </a>
-            <a href="/preferencias/password" id="settings-navigation-box">
+            <a href="/settings/password" id="settings-navigation-box">
                 <div class="png20">
                     <i class="far fa-lock-open-alt icon"></i>
                     <div class="settings-title">CONFIGURAÇÕES DE SENHA</div>
@@ -78,7 +78,7 @@ $Template->AddTemplate('others', 'head');
                 </div>
                 <div class="clear"></div>
             </a>
-            <a href="settings_security" id="settings-navigation-box">
+            <a href="settings/security" id="settings-navigation-box">
                 <div class="png20">
                     <i class="far fa-user-lock icon"></i>
                     <div class="settings-title">PROTEÇÃO DA CONTA</div>
