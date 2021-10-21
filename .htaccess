@@ -61,3 +61,4 @@ RewriteRule ^api/client(|/)$ api/actions/client.php
 RewriteRule ^api/form(|/)$ api/actions/form.php
 RewriteRule ^api/badge(|/)$ api/actions/badge.php
 RewriteRule ^api/settings(|/)$ api/actions/settings.php
+RewriteRule ^api/tags(|/)$ api/actions/tags.php

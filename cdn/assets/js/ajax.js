@@ -533,3 +533,49 @@ $(document).on('submit', 'form.form-change-password', function(e) {
 
 	return false;
 });
+
+$(document).on('submit', 'form.form-addtag', function(e) {
+	var form = $(this),
+	lastButton = form.find('button[type="submit"]').html(),
+	data = {
+		order: 'add/tags',
+		tag_add: form.find('input[name="tag-add"]').val()
+	}
+
+	$.ajax({
+
+		url: '/api/tags',
+		type: 'POST',
+		data: data,
+		beforeSend: function() {
+			form.find('.form-warns').empty();
+			form.find('.error-input').removeClass('error-input');
+			form.find('.error-input-warn').empty();
+
+			form.find('button[type="submit"]').attr('disabled', 'disabled');
+			form.find('button[type="submit"]').html('<div class="loader-button"></div>');
+		},
+		dataType: 'json',
+		success: function(data) {
+			if (data['response'] == 'success') {
+
+				form.find('.form-warns').html(data['append']).hide().slideDown(700);
+
+
+			} else {
+				form.find(data['input']).addClass('error-input');
+
+				if (data['error']) {
+					form.find(data['error']['class']).html(data['error']['text']);
+				}
+			}
+
+			setTimeout(function() {
+				form.find('button[type="submit"]').removeAttr('disabled', 'disabled');
+				form.find('button[type="submit"]').html(lastButton);
+			}, 500);
+		}
+	});
+
+	return false;
+});

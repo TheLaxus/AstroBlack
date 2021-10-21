@@ -11,7 +11,9 @@ $Template->SetParam('page_description', '');
 $Template->SetParam('page_image', URL . '/image.png');
 
 $Template->AddTemplate('others', 'head');
-?>
+?>        <script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
+
+        <script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
 
 <div class="container">
 		<div class="row">
@@ -72,12 +74,31 @@ $Template->AddTemplate('others', 'head');
 						<div class="desc">Adicione tags ao seu perfil do jogo</div>
 					</div>
                     <div class="png20">
-					aaa
+					<?php
 						
+						$getTagsFromUser = $db->prepare("SELECT id,tag FROM player_tags WHERE player_id = ?");
+						$getTagsFromUser->bindValue(1, User::userData('id'));
+						$getTagsFromUser->execute();
+
+						if ($getTagsFromUser->rowCount() > 0) {
+							while ($resultTagsFromUser = $getTagsFromUser->fetch(PDO::FETCH_ASSOC)) {
+					?>
+						<?= $resultTagsFromUser['tag']; ?>
+
+					<?php } } ?>
+			<form method="POST" class="form-addtag">
+				
                     <label for="old-mail" class="">Adicione uma tag:</label></p>
-                    <input type="text" name="tag-add" id="add-tag-input" maxlength="20"><br></p>
-                    <input type="submit" class="btn purple" name="insertTag"style="float:right;position:relative;margin-top:-66px;right:4px">Adicionar</input>
-                    
+				<div class="col-input-separator flex-column mr-top-none flex margin-bottom-minm">
+                    <input type="text" name="tag-add" id="add-tag-input" maxlength="20">
+					<div class="error-input-warn"></div>
+				</div>
+
+                    <button type="submit" class="btn purple save" style="float:right;position:relative;margin-top:-34px;right:4px;padding:10px;">Adicionar</button>
+					<br>
+					<div class="form-warns"></div>
+
+			</form>
             </div>
             
             </div>

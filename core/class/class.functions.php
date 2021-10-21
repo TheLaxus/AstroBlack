@@ -149,6 +149,53 @@ class Functions
 			];
 			
 			$value = str_replace($search, $replace, $value);
+		} else if ($type == "all") {
+			$value = htmlspecialchars_decode($string);
+			$value = trim($value);
+
+			# 18
+			$search = [
+				"<script", "/script>",
+				"<div", "/div>",
+				"<a", "/a>",
+				"<button", "/button>",
+				"<?php", "?>", "<?=",
+				"https://", "http://",
+				"<svg", "/svg>",
+				"<link", "<?xml",
+				"iron", "ironhotel",
+				"habblive", "habbolive",
+				"habblet", "blet", "let",
+				"habbok", "habok", "bok",
+				"habblize", "lize", "habbolize", "habblize",
+				"hotel",
+				"habbe",
+				"harby",
+				"ihabbe", "irrabe",
+
+			];
+
+			$replace = [
+				"", "",
+				"", "",
+				"", "",
+				"", "",
+				"", "", "",
+				"", "",
+				"", "",
+				"", "",
+				"bobba", "bobba",
+				"bobba", "bobba",
+				"bobba", "bobba", "bobba",
+				"bobba", "bobba", "bobba",
+				"bobba", "bobba", "bobba", "bobba",
+				"bobba",
+				"bobba",
+				"bobba",
+				"bobba", "bobba",
+			];
+			$value = str_replace($search, $replace, $value);
+
 		}
 
 		return $value;
