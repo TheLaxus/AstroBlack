@@ -167,11 +167,12 @@ class Functions
 				"habblive", "habbolive",
 				"habblet", "blet", "let",
 				"habbok", "habok", "bok",
-				"habblize", "lize", "habbolize", "habblize",
+				"habblize", "lize", "habbolize", "blize",
 				"hotel",
 				"habbe",
 				"harby",
 				"ihabbe", "irrabe",
+				"vibz.me", "vibz",
 
 			];
 
@@ -192,6 +193,7 @@ class Functions
 				"bobba",
 				"bobba",
 				"bobba",
+				"bobba", "bobba",
 				"bobba", "bobba",
 			];
 			$value = str_replace($search, $replace, $value);
