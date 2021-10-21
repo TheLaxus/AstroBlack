@@ -88,6 +88,7 @@ if ($Hotel::Manutention('state') == 'disabled') {
 <script type="text/javascript" src="<?= CDN; ?>/assets/js/jquery.js?<?= TIME; ?>"></script>
 <script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
 <script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
+<script type="text/javascript" src="<?= CDN; ?>/assets/js/maintenance.js?<?= TIME; ?>"></script>
 <script type="text/javascript">
 	$(document).on('click', 'a.login-staff', function() {
 		if ($('.modal-area > .login-staff')) {
