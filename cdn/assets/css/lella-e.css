@@ -9959,3 +9959,32 @@ input[type=text]::placeholder, input[type=email]::placeholder, input[type=passwo
   left:170px
 }
 
+.icon-bronze,
+                        .icon-gold,
+                        .icon-silver,
+                        .icon-arrow {
+                            position: absolute;
+                            height: 28px;
+                            width: 17px;
+                            left:310px;
+                            top:30px
+                        }
+                        .icon-gold {
+                            background: url(../img/IC.png) -18px -30px
+                        }
+
+                        .icon-silver {
+                            background: url(../img/IC.png) -63px 0
+                        }
+
+                        .icon-bronze {
+                            background: url(../img/IC.png) -19px -1px
+                        }
+
+                        .icon-arrow {
+                            background: url(../img/IC.png) -40px -19px;
+                            height: 15px;
+                            margin: 0 0 0 2px;
+                            width: 15px
+                        }
+
