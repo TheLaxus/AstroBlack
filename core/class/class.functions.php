@@ -335,10 +335,10 @@ class Functions
 			$result_user = $consult_user->fetch(PDO::FETCH_ASSOC);
 
 			if (password_verify($password, $result_user['password'])) {
-				$verif_ban = $db->prepare("SELECT reason,expire FROM bans WHERE (type = ? OR type = ? OR type = ?) ORDER BY expire");
-				$verif_ban->bindValue(1, $result_user['ip_current']);
-				$verif_ban->bindValue(2, $result_user['ip_register']);
-				$verif_ban->bindValue(3, $result_user['machine_id']);
+				$verif_ban = $db->prepare("SELECT * FROM bans WHERE (data = ? OR data = ? OR data = ?)");
+				$verif_ban->bindValue(1, $result_user['id']);
+				$verif_ban->bindValue(2, $result_user['ip_register']);	
+				$verif_ban->bindValue(3, $result_user['ip_current']);
 				$verif_ban->execute();
 
 				if ($verif_ban->rowCount() > 0) {
