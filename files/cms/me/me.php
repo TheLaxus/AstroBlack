@@ -11,9 +11,8 @@ $Template->SetParam('page_description', '');
 $Template->SetParam('page_image', URL . '/image.png');
 
 $Template->AddTemplate('others', 'head');
-?>        <script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
+?>        
 
-        <script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
 
 <div class="container">
 		<div class="row">
@@ -162,7 +161,7 @@ $Template->AddTemplate('others', 'head');
                     ?>
 								<div class="event">
 									<div class="icon" style="width:12%">
-                                    <img src="https://crazzy.host/cdn/web-gallery/v2/images/rooms/room_icon_4.gif" style="position:relative;left:-10px;top:-2px"></div>
+                                    <img src="<?= URL;?>/cdn/web-gallery/v2/images/rooms/room_icon_4.gif" style="position:relative;left:-10px;top:-2px"></div>
 									<div class="info" style="width:88%">
 										<div class="event_title"><?= $result_featured_rooms['name']; ?></div>
 										<div style="clear: both"></div>

@@ -12,9 +12,6 @@ $Template->SetParam('page_image', URL . '/image.png');
 
 $Template->AddTemplate('others', 'head');
 ?>
-    <script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
-
-    <script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
 
 <div class="container">
 		<div class="row">
