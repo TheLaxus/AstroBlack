@@ -41,7 +41,7 @@ $Template->AddTemplate('others', 'head');
                                         <?php } else { ?>
                                             <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/offline.gif'><br><br>
                                         <?php } ?>
-                                        <div class="motto" style="font-size:11px;top:-2px;left:1px">
+                                        <div style="width:100%;max-width:76%;overflow: hidden;white-space: nowrap;font-size:11px;top:-2px;left:1px;">
                                         <b>Função:</b> <?= $result_staff_role['staff_function'] ?><br />
                                         <b>Última conexão:</b> <?= Functions::userSettingsById('hide_last_online', $result_staff_role['id']) == '0' ? date("d/m/Y H:i", $result_staff_role['last_online']) : '--/--/----' ?>
                                         </p>
@@ -91,7 +91,7 @@ $Template->AddTemplate('others', 'head');
                                         <?php } else { ?>
                                             <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/offline.gif'><br><br>
                                         <?php } ?>
-                                        <div class="motto" style="font-size:11px;top:-2px;left:1px">
+                                        <div style="width:100%;max-width:76%;overflow: hidden;white-space: nowrap;font-size:11px;top:-2px;left:1px;">
                                         <b>Função:</b> <?= $result_staff_role['staff_function'] ?><br />
                                         <b>Última conexão:</b> <?= Functions::userSettingsById('hide_last_online', $result_staff_role['id']) == '0' ? date("d/m/Y H:i", $result_staff_role['last_online']) : '--/--/----' ?>
                                         </p>
@@ -153,7 +153,7 @@ $Template->AddTemplate('others', 'head');
                                         <?php } else { ?>
                                             <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/offline.gif'><br><br>
                                         <?php } ?>
-                                        <div class="motto" style="font-size:11px;top:-2px;left:1px">
+                                        <div style="width:100%;max-width:76%;overflow: hidden;white-space: nowrap;font-size:11px;top:-2px;left:1px;">
                                         <b>Função:</b> <?= $result_staff_role['staff_function'] ?><br />
                                         <b>Última conexão:</b> <?= Functions::userSettingsById('hide_last_online', $result_staff_role['id']) == '0' ? date("d/m/Y H:i", $result_staff_role['last_online']) : '--/--/----' ?>
                                         </p>
@@ -203,7 +203,7 @@ $Template->AddTemplate('others', 'head');
                                         <?php } else { ?>
                                             <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/offline.gif'><br><br>
                                         <?php } ?>
-                                        <div class="motto" style="font-size:11px;top:-2px;left:1px">
+                                        <div style="width:100%;max-width:76%;overflow: hidden;white-space: nowrap;font-size:11px;top:-2px;left:1px;">
                                         <b>Função:</b> <?= $result_staff_role['staff_function'] ?><br />
                                         <b>Última conexão:</b> <?= Functions::userSettingsById('hide_last_online', $result_staff_role['id']) == '0' ? date("d/m/Y H:i", $result_staff_role['last_online']) : '--/--/----' ?>
                                         </p>
@@ -252,7 +252,7 @@ $Template->AddTemplate('others', 'head');
                                         <?php } else { ?>
                                             <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/offline.gif'><br><br>
                                         <?php } ?>
-                                        <div class="motto" style="font-size:11px;top:-2px;left:1px">
+                                        <div style="width:100%;max-width:76%;overflow: hidden;white-space: nowrap;font-size:11px;top:-2px;left:1px;">
                                         <b>Função:</b> <?= $result_staff_role['staff_function'] ?><br />
                                         <b>Última conexão:</b> <?= Functions::userSettingsById('hide_last_online', $result_staff_role['id']) == '0' ? date("d/m/Y H:i", $result_staff_role['last_online']) : '--/--/----' ?>
                                         </p>
