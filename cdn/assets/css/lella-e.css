@@ -8362,7 +8362,7 @@ body {
   text-align: center;
   padding: 12px 20px;
   position: absolute;
-  right: 770px;
+  right: 760px;
   top: 44px;
   font: 500 12px "Poppins", "Roboto", sans-serif;
   color: rgba(46, 58, 63, 0.6);
@@ -8376,7 +8376,7 @@ body {
   border-color: transparent  #fff transparent  transparent ;
   border-width: 10px;
   position: absolute;
-  margin: -8px 0 0 -144px;
+  margin: -8px 0 0 -158px;
   content: '';
 }
 
