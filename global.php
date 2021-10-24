@@ -30,7 +30,26 @@
     define('HOTELNAME', $Hotel::Settings('hotelname'));
 	define('PATH_BADGEIMAGE', DIR . SEPARATOR . '/swf/c_images/album1584');
 	define('BADGEIMAGE', URL . '/swf/c_images/album1584/%badge%.gif');
+
+	$name = "Habbo";
+	$url = $_SERVER["HTTP_HOST"];
+	if ($url == "lella.la" || $url == "lella.org" || $url == "lella.habbo.net" || $url == "app.lella.org" || $url == "w.lella.org" || $url == "m.lella.org" || $url == "lella.ws"){
+		$name = "Lella";
+	} else if ($url == "habbinfo.info" || $url == "habbinfo.habbo.net"){
+		$name = "Habbinfo";
+	} else if ($url == "hapixel.bz" || $url == "hapixel.habbo.net"){
+		$name = "Hapixel";
+	} else if ($url == "hablitz.bz" || $url == "hablitz.habbo.net"){
+		$name = "Hablitz";
+	} else if ($url == "habblet.online" || $url == "habblet.habbo.net"){
+		$name = "Habblet";
+	} else if ($url == "habblive.com.br" || $url == "habblive.com.br"){
+		$name = "Habblive";
+	}
+
 	$allowed_view_ips = array("Laxus", "Wake"); //nicks usuarios
+
+
 
     # Puxando informaçõs do usuários se o mesmo estiver conectado, dando acesso para utilizar a variavél $user
 	if (isset($_SESSION['username']) && isset($_SESSION['password'])) {

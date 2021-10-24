@@ -36,13 +36,18 @@ $Template->AddTemplate('others', 'head');
                                   
                 <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_staff_role['username'] ?></font>
                                         </b>
+
                                         <?php if ($result_staff_role['online'] == 1) { ?>
                                             <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/online.gif'><br><br>
                                         <?php } else { ?>
                                             <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/offline.gif'><br><br>
                                         <?php } ?>
                                         <div style="width:100%;max-width:76%;overflow: hidden;white-space: nowrap;font-size:11px;top:-2px;left:1px;">
+                                        <?php if (!empty($result_staff_role['staff_function'])) { ?>
                                         <b>Função:</b> <?= $result_staff_role['staff_function'] ?><br />
+                                        <?php } else { ?>
+                                        <b>Função:</b> Responsável pela parte técnica do Hotel.<br />
+                                        <?php } ?>
                                         <b>Última conexão:</b> <?= Functions::userSettingsById('hide_last_online', $result_staff_role['id']) == '0' ? date("d/m/Y H:i", $result_staff_role['last_online']) : '--/--/----' ?>
                                         </p>
                                         </div>
@@ -92,7 +97,11 @@ $Template->AddTemplate('others', 'head');
                                             <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/offline.gif'><br><br>
                                         <?php } ?>
                                         <div style="width:100%;max-width:76%;overflow: hidden;white-space: nowrap;font-size:11px;top:-2px;left:1px;">
+                                        <?php if (!empty($result_staff_role['staff_function'])) { ?>
                                         <b>Função:</b> <?= $result_staff_role['staff_function'] ?><br />
+                                        <?php } else { ?>
+                                        <b>Função:</b> Responsável pela administração geral do Hotel.<br />
+                                        <?php } ?>
                                         <b>Última conexão:</b> <?= Functions::userSettingsById('hide_last_online', $result_staff_role['id']) == '0' ? date("d/m/Y H:i", $result_staff_role['last_online']) : '--/--/----' ?>
                                         </p>
                                         </div>
@@ -154,7 +163,11 @@ $Template->AddTemplate('others', 'head');
                                             <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/offline.gif'><br><br>
                                         <?php } ?>
                                         <div style="width:100%;max-width:76%;overflow: hidden;white-space: nowrap;font-size:11px;top:-2px;left:1px;">
+                                        <?php if (!empty($result_staff_role['staff_function'])) { ?>
                                         <b>Função:</b> <?= $result_staff_role['staff_function'] ?><br />
+                                        <?php } else { ?>
+                                        <b>Função:</b> ////<br />
+                                        <?php } ?>                                        
                                         <b>Última conexão:</b> <?= Functions::userSettingsById('hide_last_online', $result_staff_role['id']) == '0' ? date("d/m/Y H:i", $result_staff_role['last_online']) : '--/--/----' ?>
                                         </p>
                                         </div>
@@ -204,7 +217,11 @@ $Template->AddTemplate('others', 'head');
                                             <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/offline.gif'><br><br>
                                         <?php } ?>
                                         <div style="width:100%;max-width:76%;overflow: hidden;white-space: nowrap;font-size:11px;top:-2px;left:1px;">
+                                        <?php if (!empty($result_staff_role['staff_function'])) { ?>
                                         <b>Função:</b> <?= $result_staff_role['staff_function'] ?><br />
+                                        <?php } else { ?>
+                                        <b>Função:</b> Entreter com campanhas e atividades.<br />
+                                        <?php } ?>                                        
                                         <b>Última conexão:</b> <?= Functions::userSettingsById('hide_last_online', $result_staff_role['id']) == '0' ? date("d/m/Y H:i", $result_staff_role['last_online']) : '--/--/----' ?>
                                         </p>
                                         </div>
@@ -253,7 +270,11 @@ $Template->AddTemplate('others', 'head');
                                             <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/offline.gif'><br><br>
                                         <?php } ?>
                                         <div style="width:100%;max-width:76%;overflow: hidden;white-space: nowrap;font-size:11px;top:-2px;left:1px;">
+                                        <?php if (!empty($result_staff_role['staff_function'])) { ?>
                                         <b>Função:</b> <?= $result_staff_role['staff_function'] ?><br />
+                                        <?php } else { ?>
+                                        <b>Função:</b> Realizar eventos e dar suporte aos usuários.<br />
+                                        <?php } ?> 
                                         <b>Última conexão:</b> <?= Functions::userSettingsById('hide_last_online', $result_staff_role['id']) == '0' ? date("d/m/Y H:i", $result_staff_role['last_online']) : '--/--/----' ?>
                                         </p>
                                         </div>
