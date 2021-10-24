@@ -27,7 +27,6 @@
     define('AVATARIMAGE', $Hotel::Settings('avatarimage'));
     define('TIME', time());
     define('USERS', $Functions::Users('online'));
-    define('HOTELNAME', $Hotel::Settings('hotelname'));
 	define('PATH_BADGEIMAGE', DIR . SEPARATOR . '/swf/c_images/album1584');
 	define('BADGEIMAGE', URL . '/swf/c_images/album1584/%badge%.gif');
 
@@ -46,6 +45,8 @@
 	} else if ($url == "habblive.com.br" || $url == "habblive.com.br"){
 		$name = "Habblive";
 	}
+
+    define('HOTELNAME', $name);
 
 	$allowed_view_ips = array("Laxus", "Wake"); //nicks usuarios
 
