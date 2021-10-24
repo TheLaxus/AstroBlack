@@ -74,6 +74,9 @@
 						<li <?php if ($page_name == 'My-Campaigns') {?>class="visited"<?php } ?>>
 							<a href="<?= URL_PANEL; ?>/campaigns/<?= $result_panel_user['username'];?>">Minhas campanhas</a>
 						</li>
+						<li <?php if ($page_name == 'HospEmblemas') {?>class="visited"<?php } ?>>
+							<a href="<?= URL_PANEL; ?>/uploaded-badges">Emblemas hospedados</a>
+						</li>
 						<li <?php if ($page_name == 'Host-Badge') {?>class="visited"<?php } ?>>
 							<a href="<?= URL_PANEL; ?>/host-badge">Hospedar emblema</a>
 						</li>

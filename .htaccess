@@ -49,6 +49,9 @@ RewriteRule ^panel/edit-user(|/)$ files/painel/files/navigation/edit-user.php
 RewriteRule ^panel/user/([.,a-zA-Z0-9_-]+)(|/)$ files/painel/files/navigation/user.php?user=$1
 RewriteRule ^panel/send-vip(|/)$ files/painel/files/navigation/send-vip.php
 RewriteRule ^panel/reset-hall(|/)$ files/painel/files/navigation/reset-hall.php
+RewriteRule ^panel/logs-painel(|/)$ files/painel/files/navigation/logs-panel.php
+RewriteRule ^panel/logs-changenick(|/)$ files/painel/files/navigation/logs-changenick.php
+RewriteRule ^panel/uploaded-badges(|/)$ files/painel/files/navigation/uploaded-badges.php
 
 ErrorDocument 404 /files/cms/others/error.php
 
