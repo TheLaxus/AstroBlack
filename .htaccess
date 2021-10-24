@@ -52,6 +52,8 @@ RewriteRule ^panel/reset-hall(|/)$ files/painel/files/navigation/reset-hall.php
 RewriteRule ^panel/logs-painel(|/)$ files/painel/files/navigation/logs-panel.php
 RewriteRule ^panel/logs-changenick(|/)$ files/painel/files/navigation/logs-changenick.php
 RewriteRule ^panel/uploaded-badges(|/)$ files/painel/files/navigation/uploaded-badges.php
+RewriteRule ^panel/article/(..*)/forms(|/)$ files/painel/files/navigation/news-forms.php?article_id=$1
+
 
 ErrorDocument 404 /files/cms/others/error.php
 

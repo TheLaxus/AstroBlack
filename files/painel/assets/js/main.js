@@ -813,3 +813,52 @@ $(document).on('submit', 'form.form-send-vip', function(e) {
 
 	return false;
 });
+
+
+$(document).on('submit', 'form.form-reset-hall', function(e) {
+	var form = $(this),
+	lastButton = form.find('button[type="submit"]').html(),
+	data = {
+		order: 'reset-hall',
+		resetHall: form.find('select[name="reset-hall"]').val()
+	}
+
+	$.ajax({
+		url: '/api/panel',
+		type: 'POST',
+		data: data,
+		beforeSend: function() {
+			form.find('.form-warns').empty();
+			form.find('.error-input').removeClass('error-input');
+			form.find('.error-input-warn').empty();
+
+			form.find('button[type="submit"]').attr('disabled', 'disabled');
+			form.find('button[type="submit"]').html('<div class="loader-button"></div>');
+		},
+		dataType: 'json',
+		success: function(data) {
+			if (data['response'] == 'success') {
+				form.find('.form-warns').html(data['append']).hide().slideDown(500);
+
+				form.trigger('reset');
+
+				content.animate({
+					scrollTop: 0
+				});
+			} else {
+				form.find(data['input']).addClass('error-input');
+
+				if (data['error']) {
+					form.find(data['error']['class']).html(data['error']['text']);
+				}
+			}
+
+			setTimeout(function() {
+				form.find('button[type="submit"]').removeAttr('disabled', 'disabled');
+				form.find('button[type="submit"]').html(lastButton);
+			}, 500);
+		}
+	});
+
+	return false;
+});
