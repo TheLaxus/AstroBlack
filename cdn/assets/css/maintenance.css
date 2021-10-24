@@ -71,6 +71,25 @@ button.staff-login {
 	font-weight: bold;
 }
 
+.modal-info-a:before {
+	content: "";
+	position: absolute;
+	background: #000000a1;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.modal-info-a {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+
 .modal-area:before {
 	content: "";
 	position: absolute;
@@ -79,6 +98,14 @@ button.staff-login {
 	height: 100%;
 	top: 0;
 	left: 0;
+}
+.modal {
+    position: relative;
+    background: #292929;
+    width: 400px;
+    border-radius: 5px;
+    padding: 20px;
+    margin: auto;
 }
 
 .modal-area {
