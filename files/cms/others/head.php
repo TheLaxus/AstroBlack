@@ -106,7 +106,7 @@
 
 							<ul class="subnavi">
 								<li><a href="/community/staff">Equipe</a></li>
-								<li><a href="/community/colaboradores">Colaboradores</a></li>
+								<li><a href="/community/colab">Colaboradores</a></li>
 								<li><a href="/community/etiqueta">Lella Etiqueta</a></li>
 							</ul>
 						</li>
