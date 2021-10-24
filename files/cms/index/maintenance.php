@@ -9,7 +9,6 @@ if ($Hotel::Manutention('state') == 'disabled') {
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<title>Manutenção - <?= HOTELNAME; ?></title>
@@ -31,7 +30,7 @@ if ($Hotel::Manutention('state') == 'disabled') {
 					<h5>Nosso servidor está em manutenção para resolver falhas e realizar atualizações, e por isso nossa equipe de desenvolvimento <p> está a postos pra resolver o quanto antes, enquanto isso <b>fique ligado nas nossas redes sociais!</b></p>
 						<img class="error-image-main" src="<?= CDN; ?>/assets/img/main_frank.png" />
 
-						<a class="btn purple main login-staff link width-fit mr-top-1">Acesso ao hotel⠀⠀<img src="https://2.bp.blogspot.com/-a9e2N1_yJ8I/XK0oYoYMACI/AAAAAAABOsg/WSNqdOUb7cIwMAfKnQ-UT6HhidIEHT7RwCKgBGAs/s1600/Image%2B1846.png" style="position:absolute;margin-top:-3px;margin-left:0px;z-index:1"></a><br><br></p>
+						<a class="btn purple main login-staff link width-fit mr-top-1">Acesso ao hotel⠀⠀<img src="https://2.bp.blogspot.com/-a9e2N1_yJ8I/XK0oYoYMACI/AAAAAAABOsg/WSNqdOUb7cIwMAfKnQ-UT6HhidIEHT7RwCKgBGAs/s1600/Image%2B1846.png" style="position:absolute;margin-top:-3px;margin-left:0px;z-index:0"></a><br><br></p>
 				</div>
 			</div>
 			<div class="social-main">
@@ -58,7 +57,6 @@ if ($Hotel::Manutention('state') == 'disabled') {
 		</div>
 	</div>
 
-
 <div class="modal-area" style="display: none;">
 	<div class="modal staff-login">
 		<div class="login-staff flex-column">
@@ -83,6 +81,23 @@ if ($Hotel::Manutention('state') == 'disabled') {
 		</div>
 	</div>
 </div>
+</div>
+
+<div class="modal-info-a" id="exampleModal">
+	<div class="modal staff-login" style="width:600px">
+		<div class="login-staff flex-column" >
+			<div class="errors-area"></div>
+			<label class="mr-bottom-1">
+				<h2 class="bold uppercase">UM LELLA MELHOR PARA TODOS!</h2>
+				<img style="position:relative;float:right;" src="https://cdn.discordapp.com/attachments/790287842873704458/901639364113727518/teaser_descone.png" />
+				<br>
+				<h4>Para você que tem uma má conexão de internet, isso agora acabou! O Lella encontra-se hospedado em servidores de <b>localidade brasileira</b> para diminuir o <b>lag e garantir uma boa jogatina</b> a todos os nossos jogadores!</h4>
+				<br>
+				<a href="https://discord.gg/WnRdQqD7zb" target="_blank" class="btn purple main login-staff link width-fit mr-top-1">Saiba mais no nosso discord⠀⠀<img src="https://2.bp.blogspot.com/-ewCmbBLmwJQ/XK0oYo3mucI/AAAAAAABOsg/knrP3-QOugwU-J_O2LNkqZ8G7I2oLXACgCKgBGAs/s1600/Image%2B271.png" style="position:absolute;margin-top:-1px;margin-left:0px;z-index:0"></a><br><br></p>
+			</label>
+			</div>
+	</div>
+</div>
 
 </body>
 <script type="text/javascript" src="<?= CDN; ?>/assets/js/jquery.js?<?= TIME; ?>"></script>
@@ -101,6 +116,16 @@ if ($Hotel::Manutention('state') == 'disabled') {
 			$(this).fadeOut(250);
 		}
 	});
-</script>
 
+	$(window).on('load',function(){
+        $('.modal-info-a').modal('show');
+		$('.modal-info-a').fadeIn(250);
+    });
+
+	$(document).on('click', '.modal-info-a', function() {
+		if (!$(this).find('.modal').is(':hover')) {
+			$(this).fadeOut(250);
+		}
+	});
+</script>
 </html>
