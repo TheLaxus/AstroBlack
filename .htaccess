@@ -17,6 +17,7 @@ RewriteRule ^client(|/)$ files/cms/client/index.php
 RewriteRule ^beta(|/)$ files/cms/client/index_beta.php
 RewriteRule ^community(|/)$ files/cms/community/community.php
 RewriteRule ^community/staff(|/)$ files/cms/community/staff.php
+RewriteRule ^community/colab(|/)$ files/cms/community/colaboracao.php
 RewriteRule ^hall(|/)$ files/cms/community/fama.php
 
 RewriteRule ^article/(..*)(|/)$ files/cms/articles/article.php?article_id=$1
