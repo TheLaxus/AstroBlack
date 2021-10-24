@@ -28,6 +28,9 @@
 						<label>
 							<h6 class="fs-12 uppercase">CEO</h6>
 						</label>
+						<li <?php if ($page_name == 'Reset-Hall') {?>class="visited"<?php } ?>>
+							<a href="<?= URL_PANEL; ?>/reset-hall">Resetar Hall da Fama</a>
+						</li>
 						<li <?php if ($page_name == 'Logs-Nicknames') {?>class="visited"<?php } ?>>
 							<a href="<?= URL_PANEL; ?>/logs-changenick">Logs de Mudança de nick</a>
 						</li>

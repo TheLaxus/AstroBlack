@@ -1908,6 +1908,91 @@
 					]
 				]);
 			}
+		} else if ($order == "reset-hall") {
+			$resetHall = (isset($_POST['resetHall'])) ? $_POST['resetHall'] : '';
+
+
+			if (empty($resetHall)) {
+				echo json_encode([
+					"response" => 'error',
+					"input" => 'select[name="reset-hall"]',
+					"error" => [
+						"class" => 'div.col-input-separator:nth-child(3) > .error-input-warn',
+						"text" => 'Escolha alguma opção para resetar.' 
+					]
+				]);
+			}
+			
+			if ($resetHall == "reset-events") {
+				$reset_events = $db->prepare("UPDATE players SET event_points = ?");
+				$reset_events->bindValue(1, '0');
+				$reset_events->execute();
+
+				if ($reset_events->rowCount() > 0) {
+
+					$insert_panel_log = $db->prepare("INSERT INTO cms_panel_logs (label) VALUES (?)");
+					$insert_panel_log->bindValue(1, 'reset-events;' . $user['username'] . ';' . TIME . ';' . IP . ';success');
+					$insert_panel_log->execute();
+
+					echo json_encode([
+						"response" => 'success',
+						"append" => '<div class="form-warn success mr-bottom-1"><label class="flex-column"><h4 class="bold uppercase">Sucesso!</h4><h5>Você resetou o <b>Hall de Eventos</b> com êxito.</h5></label></div>'
+					]);
+				} else {
+					echo json_encode([
+						"response" => 'success',
+						"append" => '<div class="form-warn error mr-bottom-1"><label class="flex-column"><h4 class="bold uppercase">Ops!</h4><h5>Parece que o <b>Hall de Eventos</b> já está zerado.</h5></label></div>'
+					]);
+				}
+			} else if ($resetHall == "reset-promos") {
+
+				$reset_promos = $db->prepare("UPDATE players SET promo_points = ?");
+				$reset_promos->bindValue(1, '0');
+				$reset_promos->execute();
+
+				if ($reset_promos->rowCount() > 0) {
+
+					$insert_panel_log = $db->prepare("INSERT INTO cms_panel_logs (label) VALUES (?)");
+					$insert_panel_log->bindValue(1, 'reset-promos;' . $user['username'] . ';' . TIME . ';' . IP . ';success');
+					$insert_panel_log->execute();
+
+					echo json_encode([
+						"response" => 'success',
+						"append" => '<div class="form-warn success mr-bottom-1"><label class="flex-column"><h4 class="bold uppercase">Sucesso!</h4><h5>Você resetou o <b>Hall de Promoções</b> com êxito.</h5></label></div>'
+					]);
+
+				} else {
+					echo json_encode([
+						"response" => 'success',
+						"append" => '<div class="form-warn error mr-bottom-1"><label class="flex-column"><h4 class="bold uppercase">Ops!</h4><h5>Parece que o <b>Hall de Promoções</b> já está zerado.</h5></label></div>'
+					]);
+				}
+			} else if ($resetHall == "reset-all") {
+
+				$reset_all = $db->prepare("UPDATE players SET event_points = ? AND promo_points = ?");
+				$reset_all->bindValue(1, '0');
+				$reset_all->bindValue(2, '0');
+				$reset_all->execute();
+
+				if ($reset_all->rowCount() > 0) {
+
+					$insert_panel_log = $db->prepare("INSERT INTO cms_panel_logs (label) VALUES (?)");
+					$insert_panel_log->bindValue(1, 'all-reset-hall;' . $user['username'] . ';' . TIME . ';' . IP . ';success');
+					$insert_panel_log->execute();
+
+					echo json_encode([
+						"response" => 'success',
+						"append" => '<div class="form-warn success mr-bottom-1"><label class="flex-column"><h4 class="bold uppercase">Sucesso!</h4><h5>Você resetou o <b>Hall de Promoções</b> com êxito.</h5></label></div>'
+					]);
+				} else {
+					echo json_encode([
+						"response" => 'success',
+						"append" => '<div class="form-warn error mr-bottom-1"><label class="flex-column"><h4 class="bold uppercase">Ops!</h4><h5>Parece que o <b>Hall de Promoções</b> e de <b>Eventos</b> já está zerado.</h5></label></div>'
+					]);
+				}
+
+			}
+
 		}
 	} else {
 		echo 'Cannot get ' . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . '.';

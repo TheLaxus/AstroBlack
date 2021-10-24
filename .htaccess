@@ -14,6 +14,7 @@ RewriteRule ^settings(|/)$ files/cms/me/settings_others.php
 RewriteRule ^article(|/)$ files/cms/articles/article.php
 
 RewriteRule ^client(|/)$ files/cms/client/index.php
+RewriteRule ^beta(|/)$ files/cms/client/index_beta.php
 RewriteRule ^community(|/)$ files/cms/community/community.php
 RewriteRule ^community/staff(|/)$ files/cms/community/staff.php
 RewriteRule ^hall(|/)$ files/cms/community/fama.php
@@ -47,6 +48,7 @@ RewriteRule ^panel/create-page/delete/([a-zA-Z0-9_-]+)(|/)$ api/actions/deletePa
 RewriteRule ^panel/edit-user(|/)$ files/painel/files/navigation/edit-user.php
 RewriteRule ^panel/user/([.,a-zA-Z0-9_-]+)(|/)$ files/painel/files/navigation/user.php?user=$1
 RewriteRule ^panel/send-vip(|/)$ files/painel/files/navigation/send-vip.php
+RewriteRule ^panel/reset-hall(|/)$ files/painel/files/navigation/reset-hall.php
 
 ErrorDocument 404 /files/cms/others/error.php
 
