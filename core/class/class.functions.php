@@ -477,5 +477,49 @@ class Functions
         }
     }
 
+private static function getBadgeCode($txt) {
+	return substr($txt, 11, strpos($txt, '=') - 11);
+}
+
+private static function getBadgeName($txt) {
+	if (startsWith($txt, 'badge_name')) {
+		return substr($txt, strpos($txt, '=') + 1, strlen($txt) - 1);
+	}
+}
+
+private static function getBadgeDesc($txt) {
+	if (startsWith($txt, 'badge_desc')) {
+		return substr($txt, strpos($txt, '=') + 1, strlen($txt) - 1);
+	}
+}
+	  
+
+	public static function getUploadedBadges() {
+
+	  $badges = array();
+
+	  $texts = file($_SERVER['DOCUMENT_ROOT'].'/swf/gamedata/habbo_override_texts.txt', FILE_IGNORE_NEW_LINES);
+	  $i = 0;
+	  foreach ($texts as $line_num => $line) {
+		  if (startsWith($line, 'badge_')) {
+			  if ($i % 2 == 0) { // par
+				  $lineName = $texts[$line_num];
+				  $lineDesc = $texts[$line_num + 1];
+					
+					$code = self::getBadgeCode($lineName);
+
+				  $obj = array();
+				  $obj['code'] = $code;
+				  $obj['name'] = self::getBadgeName($lineName);
+				  $obj['desc'] = self::getBadgeDesc($lineDesc);
+				  $obj['link'] = str_replace(['%badge%'], $code, BADGEIMAGE);
+				  array_push($badges, $obj);
+			  }
+			  $i++;
+		  }
+	  }
+
+	  return $badges;
+  }
 	
 }
