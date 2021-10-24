@@ -72,7 +72,7 @@ $Template->AddTemplate('others', 'head');
                         <div class="title">Minhas Tags</div>
 						<div class="desc">Adicione tags ao seu perfil do jogo</div>
 					</div>
-                    <div class="png20">
+                    <div class="png10">
 					<?php
 						
 						$getTagsFromUser = $db->prepare("SELECT id,tag FROM player_tags WHERE player_id = ?");
@@ -82,9 +82,11 @@ $Template->AddTemplate('others', 'head');
 						if ($getTagsFromUser->rowCount() > 0) {
 							while ($resultTagsFromUser = $getTagsFromUser->fetch(PDO::FETCH_ASSOC)) {
 					?>
-						<?= $resultTagsFromUser['tag']; ?>
+						<?= $resultTagsFromUser['tag']; ?> <i class="far fa-minus" style="color:red;font-size:10px"></i>
 
 					<?php } } ?>
+					</div>
+			<div class="png20">
 			<form method="POST" class="form-addtag">
 				
                     <label for="old-mail" class="">Adicione uma tag:</label></p>
@@ -146,7 +148,7 @@ $Template->AddTemplate('others', 'head');
 				</div>
 			</div>
 					
-			<div class="col-4">
+			<div class="col-5">
 				<div id="content-box" style="max-height:300px">
 					<div class="title-box png20">
 						<div class="title">Quartos populares</div>
