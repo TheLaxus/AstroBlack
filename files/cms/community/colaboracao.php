@@ -42,8 +42,12 @@ $Template->AddTemplate('others', 'head');
                                         <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/offline.gif'><br><br>
                                     <?php } ?>
                                     <div style="width:100%;max-width:76%;overflow: hidden;white-space: nowrap;font-size:11px;top:-2px;left:1px;">
-                                        <b>Função:</b> Responsável pela parte técnica geral do Hotel<?= $result_staff_role['staff_function'] ?><br />
-                                        <b>Última conexão:</b> <?= Functions::userSettingsById('hide_last_online', $result_staff_role['id']) == '0' ? date("d/m/Y H:i", $result_staff_role['last_online']) : '--/--/----' ?>
+                                    <?php if (!empty($result_staff_role['staff_function'])) { ?>
+                                        <b>Função:</b> <?= $result_staff_role['staff_function'] ?><br />
+                                    <?php } else { ?>
+                                        <b>Função:</b> Dar suporte aos usuários.<br />
+                                    <?php } ?>                                        
+                                    <b>Última conexão:</b> <?= Functions::userSettingsById('hide_last_online', $result_staff_role['id']) == '0' ? date("d/m/Y H:i", $result_staff_role['last_online']) : '--/--/----' ?>
                                         </p>
                                     </div>
                                 </div>
