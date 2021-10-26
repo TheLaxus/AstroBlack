@@ -9960,31 +9960,70 @@ input[type=text]::placeholder, input[type=email]::placeholder, input[type=passwo
 }
 
 .icon-bronze,
-                        .icon-gold,
-                        .icon-silver,
-                        .icon-arrow {
-                            position: absolute;
-                            height: 28px;
-                            width: 17px;
-                            left:310px;
-                            top:30px
-                        }
-                        .icon-gold {
-                            background: url(../img/IC.png) -18px -30px
-                        }
+.icon-gold,
+.icon-silver,
+.icon-arrow {
+position: absolute;
+height: 28px;
+width: 17px;
+left:310px;
+top:30px
+}
+.icon-gold {
+background: url(../img/IC.png) -18px -30px
+}
 
-                        .icon-silver {
-                            background: url(../img/IC.png) -63px 0
-                        }
+.icon-silver {
+background: url(../img/IC.png) -63px 0
+}
 
-                        .icon-bronze {
-                            background: url(../img/IC.png) -19px -1px
-                        }
+.icon-bronze {
+background: url(../img/IC.png) -19px -1px
+}
 
-                        .icon-arrow {
-                            background: url(../img/IC.png) -40px -19px;
-                            height: 15px;
-                            margin: 0 0 0 2px;
-                            width: 15px
-                        }
+.icon-arrow {
+background: url(../img/IC.png) -40px -19px;
+height: 15px;
+margin: 0 0 0 2px;
+width: 15px
+}
 
+.bg-h {
+background-image: url(../img/html-n.png);
+background-position: -40px -50px;
+height: 100%;
+width: 100%;
+border-radius: 4px;
+}
+
+.bg-f {
+background-image: url(../img/html-f.png);
+background-position: -40px -50px;
+height: 100%;
+width: 100%;
+border-radius: 4px;
+}
+
+.bg-o-a {
+background-image: url(../img/html-o.png);
+background-position: 0px -50px;
+height: 100%;
+width: 100%;
+border-radius: 4px;
+}
+
+.bg-o {
+background-image: url(../img/html-o.png);
+background-position: -40px -10px;
+height: 100%;
+width: 100%;
+border-radius: 4px;
+}
+.title-v {
+font: 600 13.5px "Poppins", "Roboto", sans-serif;
+color:#fff;
+}
+.desc-v {
+font: 500 12px "Poppins", "Roboto", sans-serif;
+color: rgba(225, 225, 225, 0.9);
+}
