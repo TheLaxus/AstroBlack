@@ -82,7 +82,7 @@ $Template->AddTemplate('others', 'head');
 						if ($getTagsFromUser->rowCount() > 0) {
 							while ($resultTagsFromUser = $getTagsFromUser->fetch(PDO::FETCH_ASSOC)) {
 					?>
-						<?= $resultTagsFromUser['tag']; ?>
+						<?= $resultTagsFromUser['tag']; ?> <i class="far fa-minus" style="color:red;font-size:10px"></i>
 
 					<?php } } ?>
 			<form method="POST" class="form-addtag">
