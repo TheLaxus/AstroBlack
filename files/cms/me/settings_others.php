@@ -32,7 +32,7 @@ $Template->AddTemplate('others', 'head');
         <form method="post" class="form-others-settings">
         <div class="form-warns"></div>
 
-            <div id="content-box" style="height:890px">
+            <div id="content-box" style="height:1060px">
                 <div class="title-box png20">
                     <div class="title">CONFIGURAÇÕES DE PRIVACIDADE</div>
                 </div>
@@ -50,7 +50,18 @@ $Template->AddTemplate('others', 'head');
                              $clientFPS = $db->prepare("SELECT * FROM cms_clients WHERE user_id = ?");
                              $clientFPS->bindValue(1, User::userData('id'));
                              $clientFPS->execute();
-                             $showFPS = $clientFPS->fetch(PDO::FETCH_ASSOC);
+
+                             $clientFPS_beta = $db->prepare("SELECT * FROM cms_clients_beta WHERE user_id = ?");
+                             $clientFPS_beta->bindValue(1, User::userData('id'));
+                             $clientFPS_beta->execute();
+
+                             if ($clientFPS_beta->rowCount() > 0) {
+                                 $betaFPS = $clientFPS_beta->fetch(PDO::FETCH_ASSOC);
+                             }
+                             
+                             if ($clientFPS->rowCount() > 0) {
+                                $showFPS = $clientFPS->fetch(PDO::FETCH_ASSOC);
+                             } 
                             ?>
 
                     <label for="old-mail">Missão</label>
@@ -62,7 +73,7 @@ $Template->AddTemplate('others', 'head');
 
                     <div class="line"></div>
 
-                <label>Veersão da client</label>
+                <label>Versão da client (FLASH)</label>
                         <div class="desc">Escolha conforme a sua performance do PC</div>
                         <div class="btnset">
                 <select class="form-control" name="version">
@@ -70,6 +81,16 @@ $Template->AddTemplate('others', 'head');
                                         <option value="60" <?= $showFPS['version'] == '60' ? 'selected' : '' ?>>60 FPS (MELHORADA)</option>
                                     </select>
                                     </div>
+
+                <label>Versão da client (BETA)</label>
+                <div class="desc">Escolha conforme a sua performance do PC</div>
+                <div class="btnset">
+        <select class="form-control" name="version_beta">
+                                <option value="24" <?= $betaFPS['version'] == '24' ? 'selected' : '' ?>>24 FPS (NORMAL)</option>
+                                <option value="60" <?= $betaFPS['version'] == '60' ? 'selected' : '' ?>>60 FPS (MELHORADA)</option>
+                            </select>
+                            </div>
+                            <div class="line"></div>
 
                         <label>Estado online?</label>
                         <div class="desc">Permitir que outros usuários vejam quando você estiver online? </div>
@@ -83,6 +104,11 @@ $Template->AddTemplate('others', 'head');
                         <input type="checkbox" name="last_online" <?= $usersetting['hide_last_online'] == '0' ? 'checked' : '' ?> value="<?= $usersetting['hide_last_online']?>" data-toggle="toggle" data-size="sm">
                         </div>
 
+                        <label>Pedidos de amizade</label>
+                        <div class="desc">Permitir que outros usuários vejam a última vez que você entrou no hotel?</div>
+                        <div class="optionset">
+                        <input type="checkbox" name="amizade" <?= $usersetting['allow_friend_requests'] == '1' ? 'checked' : '' ?> data-toggle="toggle" data-size="sm">
+                        </div>
 
                         <label>Opção de seguir</label>
                         <div class="desc">Todos podem seguir?</div>
