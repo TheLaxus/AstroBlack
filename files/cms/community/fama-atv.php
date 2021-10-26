@@ -16,7 +16,7 @@ $Template->AddTemplate('others', 'head');
     <div class="column">
         <div class="row">
             <div class="col-6">
-                <a href="/community/hall/economy" id="settings-navigation-box">
+                <a href="hall/economy" id="settings-navigation-box">
                     <div class="png20">
                         <i class="far fa-coins icon"></i>
                         <div class="settings-title">HALL DE ECONOMIA</div>

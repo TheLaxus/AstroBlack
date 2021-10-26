@@ -27,7 +27,7 @@ $Template->AddTemplate('others', 'head');
             </div>
 
             <div class="col-6">
-                <a href="/community/hall/activity" id="settings-navigation-box">
+                <a href="hall/activity" id="settings-navigation-box">
                     <div class="png20">
                         <i class="far fa-crown icon"></i>
                         <div class="settings-title">HALL DE ATIVIDADES</div>
