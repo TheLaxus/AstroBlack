@@ -93,7 +93,7 @@ $Template->AddTemplate('others', 'head');
 					<div class="error-input-warn"></div>
 				</div>
 
-                    <button type="submit" class="btn purple save" style="float:right;position:relative;margin-top:-34px;right:4px;padding:10px;">Adicionar</button>
+                    <button type="submit" class="btn purple save" style="float:right;position:relative;margin-top:-28px;right:4px;padding:10px;">Adicionar</button>
 					<br>
 					<div class="form-warns"></div>
 
