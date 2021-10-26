@@ -28,7 +28,7 @@ $Template->AddTemplate('others', 'head');
                     <div class="last-online">Último acesso: <?= strftime('%d de %B de %Y às %H:%M', $user['last_online']); ?></div>
                 
                 <div class="btn-select">
-                <a href="beta" class="btn purple client" target="_blank">Entrar no BETA⠀⠀<img src="<?= CDN; ?>/assets/img/hotel-button-medium-icon.png" style="position:absolute;margin-top:-3px;margin-left:0px;z-index:1"></a><br><br></p>
+                <a href="html5" class="btn purple client" target="_blank">Entrar no BETA⠀⠀<img src="<?= CDN; ?>/assets/img/hotel-button-medium-icon.png" style="position:absolute;margin-top:-3px;margin-left:0px;z-index:1"></a><br><br></p>
                 <a href="client" class="btn purple client" target="_blank">Entrar no Flash⠀<img src="<?= CDN; ?>/assets/img/hotel-button-medium-icon.png" style="position:absolute;margin-top:-3px;margin-left:0px;z-index:1"></a>
                 </div> 
                 </div>

@@ -49,6 +49,13 @@
 		$insert_users_settings->bindValue(2, '1893549600');
 		$insert_users_settings->execute(); 
 	}
+
+	$consult_client_version = $db->prepare("SELECT version FROM cms_clients_beta WHERE user_id = ?");
+	$consult_client_version->bindValue(1, $user['id']);
+	$consult_client_version->execute();
+
+	$result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
+
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -57,14 +64,25 @@
     <title>BETA - Lella</title>
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="<?= CDN; ?>/assets/css/dutstrap.css?<?= TIME; ?>">
+	<link rel="stylesheet" type="text/css" href="<?= CDN; ?>/assets/css/client.css?<?= TIME; ?>">
+	<link rel="stylesheet" type="text/css" href="<?= CDN; ?>/assets/css/types.css?<?= TIME; ?>">
+	<link type="text/css" href="<?= CDN; ?>/assets/css/lella-e.css" rel="stylesheet">
+	<!--Tema escuro-->
+	<link rel="stylesheet" type="text/css" href="<?= CDN; ?>/assets/css/buttons.css?<?= TIME; ?>">
+
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<link rel="stylesheet" href="<?= URL; ?>/game/styles.3f08ab665bffd7c30247.css">
 </head>
 <body>
+<?php
+	if ($consult_client_version->rowCount() > 0) {
+		if ($result_client_version['version'] != '0') {
+?>
     <app-root></app-root>
    <script>
    var NitroConfig = {
-            configurationUrls: [ '/game/renderer-config.json', '/game/ui-config.json' ],
+            configurationUrls: [ '/game/renderer-config<?=$result_client_version['version'];?>.json', '/game/ui-config.json' ],
             sso: '<?= $Functions::User('auth_ticket', USERNAME); ?>'
         };
 
@@ -75,6 +93,12 @@
     <script src="<?= URL; ?>/game/main.11be41cba051016c3ae1.js" defer></script>
   	<script>console.log('%c Lella HTML5 desenvolvido por Emerson, Laxus e Wake. %c\nAgradecimentos à: Billsonnn e desenvolvedores do Nitro.', 'color: #black; font-size: 13pt; padding: 20px;', 'font-size: 9pt; padding: 5px 20px 20px;');</script>
 
+	  <?php
+		}
+	} else {
+		Redirect(URL . '/client');
+	}
+	?>
 
 </body>
 </html>

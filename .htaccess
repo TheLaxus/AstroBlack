@@ -14,7 +14,7 @@ RewriteRule ^settings(|/)$ files/cms/me/settings_others.php
 RewriteRule ^article(|/)$ files/cms/articles/article.php
 
 RewriteRule ^client(|/)$ files/cms/client/index.php
-RewriteRule ^beta(|/)$ files/cms/client/index_beta.php
+RewriteRule ^html5(|/)$ files/cms/client/index_beta.php
 RewriteRule ^community(|/)$ files/cms/community/community.php
 RewriteRule ^community/staff(|/)$ files/cms/community/staff.php
 RewriteRule ^community/colab(|/)$ files/cms/community/colaboracao.php

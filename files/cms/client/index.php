@@ -139,7 +139,7 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 					url: ''
 				};
 
-				swfobject.embedSWF('<?= $Hotel::Settings('flash_client_url'); ?>/Habbo.swf?v=13', 'flash-container', '100%', '100%', '11.1.0', 'expressInstall.swf', clientvars, params, null, null);
+				swfobject.embedSWF('<?= $Hotel::Settings('flash_client_url'); ?>/Habbo<?= $result_client_version['version'];?>.swf?v=13', 'flash-container', '100%', '100%', '11.1.0', 'expressInstall.swf', clientvars, params, null, null);
 			</script>
 			<script src="<?= CDN; ?>/assets/js/habboapi.js"></script>
 			<!-- <script src="<?= CDN; ?>/assets/js/radio.js?v=1"></script> -->
@@ -153,7 +153,6 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-
 
 	<div class="client-ui flex">
 		<!--<button class="client-expand flex margin-right-minm" tooltip="Colocar a client em modo tela cheia.">
@@ -173,7 +172,10 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 			<div class="client-notification-area"></div>
 		</div>
 	</div>
-	
+<?php 
+	if ($consult_client_version->rowCount() > 0) { 
+		if ($result_client_version['version'] != '0') {
+?>
 	<div id="flash-container" style="z-index: 99999 !important;">
 		<div class="flash-disabled-container flex" style="background: url(../img/background.png) rgb(53, 53, 53);">
 			<div class="flash-disabled-content flex margin-auto">
@@ -201,6 +203,7 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 			</div>
 		</div>
 	</div>
+	<?php } else { ?>
 
 	<div class="flash-disabled-container flex" style="z-index: 99999 !important; background: url(../img/background.png) rgb(53, 53, 53);">
 		<div class="container">
@@ -209,7 +212,7 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 				<div class="col-12">
 					<div id="content-box">
 						<div class="title-box png20">
-							Escolha a versão que deseja jogar o lella hotel!
+							Escolha a versão que deseja jogar o <?= HOTELNAME;?> Hotel!
 						</div>
 					</div>
 				</div>
@@ -219,7 +222,7 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 							<div class="title-v">JOGAR VERSÃO HTML (NOVO)</div>
 							<div class="png20"></div>
 						</div>
-						<a class="btn purple save" id="html-v" data-modal="html" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Jogar versão HTML</a>
+						<button type="submit" class="btn purple save" id="html-v" data-modal="html" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Jogar versão HTML</button>
 					</div>
 				</div>
 
@@ -229,7 +232,7 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 							<div class="title-v">JOGAR VERSÃO FLASH (ANTIGO)</div>
 							<div class="png20"></div>
 						</div>
-						<a class="btn green save" id="flash-v" data-modal="flash" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Jogar versão FLASH</a>
+						<button type="submit" class="btn green save" id="flash-v" data-modal="flash" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Jogar versão FLASH</button>
 					</div>
 				</div>
 
@@ -267,8 +270,14 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 									<button type="ok" class="close close-modal" style="position:relative;top:-20px;float:right;right:14px"></button>
 
 									<div class="margin-top-min">
-										<button class="btn purple big next-register" class="button" style="width: 100%; height: 45px;margin-bottom:7px;margin-top:20px">Jogar em 24 fps</button>
-										<button class="btn purple big next-register" class="button" style="width: 100%; height: 45px;">Jogar em 60 fps</button>
+										<div class="set-client-version">
+										<form method="POST" class="set-client-beta-24">
+											<button type="submit" class="btn purple big next-register" versionBeta_24="24" class="button" style="width: 100%; height: 45px;margin-bottom:7px;margin-top:20px">Jogar em 24 fps</button>
+										</form>	
+										<form method="POST" class="set-client-beta-60">
+											<button type="submit" class="btn purple big next-register" versionBeta_60="60" class="button" style="width: 100%; height: 45px;">Jogar em 60 fps</button>
+										</form>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -287,8 +296,14 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 									<button type="ok" class="close close-modal" style="position:relative;top:-20px;float:right;right:14px"></button>
 
 									<div class="margin-top-min">
-										<button class="btn purple big next-register" class="button" style="width: 100%; height: 45px;margin-bottom:7px;margin-top:20px">Jogar em 24 fps</button>
-										<button class="btn purple big next-register" class="button" style="width: 100%; height: 45px;">Jogar em 60 fps</button>
+										<div class="set-client-version">
+										<form method="POST" class="set-client-flash-24">
+											<button type="submit" class="btn purple big next-register" version_24="24" class="button" style="width: 100%; height: 45px;margin-bottom:7px;margin-top:20px">Jogar em 24 fps</button>
+										</form>
+										<form method="POST" class="set-client-flash-60">
+											<button type="submit" class="btn purple big next-register" version_60="60" class="button" style="width: 100%; height: 45px;">Jogar em 60 fps</button>
+										</form>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -296,6 +311,118 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 					</div>
 				</div>
 			</div>
+			<?php
+				}
+			} else {
+		?>
+			<div class="flash-disabled-container flex" style="z-index: 99999 !important; background: url(../img/background.png) rgb(53, 53, 53);">
+		<div class="container">
+			<div class="row">
+				<div class="logo"></div>
+				<div class="col-12">
+					<div id="content-box">
+						<div class="title-box png20">
+							Escolha a versão que deseja jogar o <?= HOTELNAME;?> Hotel!
+						</div>
+					</div>
+				</div>
+				<div class="col-6">
+					<div id="content-box">
+						<div class="title-box png20 bg-h">
+							<div class="title-v">JOGAR VERSÃO HTML (NOVO)</div>
+							<div class="png20"></div>
+						</div>
+						<button type="submit" class="btn purple save" id="html-v" data-modal="html" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Jogar versão HTML</button>
+					</div>
+				</div>
+
+				<div class="col-6">
+					<div id="content-box">
+						<div class="title-box png20 bg-f">
+							<div class="title-v">JOGAR VERSÃO FLASH (ANTIGO)</div>
+							<div class="png20"></div>
+						</div>
+						<button type="submit" class="btn green save" id="flash-v" data-modal="flash" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Jogar versão FLASH</button>
+					</div>
+				</div>
+
+				<div class="col-7">
+					<div id="content-box">
+						<div class="title-box png20 bg-o-a">
+							<div class="title-v">JOGAR COM APLICATIVO (PC)</div>
+							<div class="desc-v">Jogue sem usar o navegador somente baixando o nosso aplicativo exclusivo.</div>
+							<div class="png20"></div>
+						</div>
+						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo windows</button>
+					</div>
+				</div>
+
+				<div class="col-5">
+					<div id="content-box">
+						<div class="title-box png20 bg-o">
+							<div class="title-v">JOGAR NO PUFFIN (ANDROID/IOS)</div>
+							<br>
+							<div class="png20"></div>
+						</div>
+						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo</button>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="modal-container" id="html" data-modal="html">
+				<div id="modal-content">
+					<div id="news-modal">
+						<div class="col-12">
+							<div id="content-box" style="height:190px;">
+								<div class="title-box png20">
+									<div class="title"> ESCOLHA O TIPO DE CLIENT (HTML)</div>
+									<button type="ok" class="close close-modal" style="position:relative;top:-20px;float:right;right:14px"></button>
+
+									<div class="margin-top-min">
+										<div class="set-client-version">
+										<form method="POST" class="set-client-beta-24">
+											<button type="submit" class="btn purple big next-register" versionBeta_24="24" class="button" style="width: 100%; height: 45px;margin-bottom:7px;margin-top:20px">Jogar em 24 fps</button>
+										</form>	
+										<form method="POST" class="set-client-beta-60">
+											<button type="submit" class="btn purple big next-register" versionBeta_60="60" class="button" style="width: 100%; height: 45px;">Jogar em 60 fps</button>
+										</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-container" id="flash" data-modal="flash">
+				<div id="modal-content">
+					<div id="news-modal">
+						<div class="col-12">
+							<div id="content-box" style="height:190px;">
+								<div class="title-box png20">
+									<div class="title"> ESCOLHA O TIPO DE CLIENT (FLASH)</div>
+									<button type="ok" class="close close-modal" style="position:relative;top:-20px;float:right;right:14px"></button>
+
+									<div class="margin-top-min">
+										<div class="set-client-version">
+										<form method="POST" class="set-client-flash-24">
+											<button type="submit" class="btn purple big next-register" version_24="24" class="button" style="width: 100%; height: 45px;margin-bottom:7px;margin-top:20px">Jogar em 24 fps</button>
+										</form>
+										<form method="POST" class="set-client-flash-60">
+											<button type="submit" class="btn purple big next-register" version_60="60" class="button" style="width: 100%; height: 45px;">Jogar em 60 fps</button>
+										</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?php } ?>
+
 			<!--<div class="flash-disabled-container flex margin-auto">
 				<div class="frank margin-right-md"></div>
 				<div class="margin-auto-top-bottom flex-column">
