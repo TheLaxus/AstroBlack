@@ -53,6 +53,16 @@
                 ]);
                 return;
                 
+            } else if (User::userData('online') == 1) {
+                echo json_encode([
+                    "response" => 'error',
+                    "input" => 'input[name="tag-add"]',
+                    "error" => [
+                        "class" => 'div.col-input-separator:nth-child(3) > .error-input-warn',
+                        "text" => 'Você precisa está offline para adicionar uma tag.'
+                    ]
+                ]);
+                return;
             } else {
                 $tags = strtolower(Functions::Filter("all", $tag));
 

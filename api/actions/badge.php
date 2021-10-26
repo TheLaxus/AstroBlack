@@ -38,6 +38,15 @@
                             "text" => 'O emblema não foi encontrado.'
                         ]
                     ]);
+                } else if(User::userData('online') == 1) {
+                    echo json_encode([
+                        "response" => 'error',
+                        "input" => 'input[name="badgeCode"]',
+                        "error" => [
+                            "class" => 'div.col-input-separator:nth-child(6) > .error-input-warn',
+                            "text" => 'Você precisa está offline para receber o emblema.'
+                        ]
+                    ]);
                 } else {
 
                     $getPlayerId = $db->prepare("SELECT id FROM players WHERE username = ?");
