@@ -396,10 +396,14 @@ $(document).on('submit', 'form.form-others-settings', function(e) {
 		order: 'settings/account',
 		motto: form.find('input[name="motto"]').val(),
 		version: form.find('select[name="version"]').val(),
+		version_beta: form.find('select[name="version_beta"]').val(),
 		hideonline: form.find('input[name="online"]:checked').toArray().map(function(check) { 
 			return $(check).val(); 
 		}),
 		lastOnline: form.find('input[name="last_online"]:checked').toArray().map(function(check) { 
+			return $(check).val(); 
+		}),
+		amizade: form.find('input[name="amizade"]:checked').toArray().map(function(check) { 
 			return $(check).val(); 
 		}),
 		seguir: form.find('input[name="seguir"]:checked').toArray().map(function(check) { 

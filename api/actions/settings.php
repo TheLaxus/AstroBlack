@@ -41,14 +41,29 @@
                     $versions = $_POST['version'];
                 }
 
+                
                 $updateClientVersion = $db->prepare("UPDATE cms_clients SET version = ? WHERE user_id = ?");
                 $updateClientVersion->bindValue(1, $versions);
                 $updateClientVersion->bindValue(2, User::userData('id'));
                 $updateClientVersion->execute();
 
+                
+                $versions_beta = 0;
+            
+                if (isset($_POST['version_beta']) == '24' || isset($_POST['version_beta']) == '60') {
+                    $versions_beta = $_POST['version_beta'];
+                }
+
+                $updateClientVersionBeta = $db->prepare("UPDATE cms_clients_beta SET version = ? WHERE user_id = ?");
+                $updateClientVersionBeta->bindValue(1, $versions_beta);
+                $updateClientVersionBeta->bindValue(2, User::userData('id'));
+                $updateClientVersionBeta->execute();
+
 
                 $hideOnline = isset($_POST['hideonline']) ? '0' : '1';
                 $lastOnline = isset($_POST['lastOnline']) ? '0' : '1';
+                $amizade = isset($_POST['amizade']) ? '1' : '0';
+                $allowSex = isset($_POST['sexo']) ? '1' : '0';
                 $follow = isset($_POST['seguir']) ? '1' : '0';
                 $copyFigure = isset($_POST['copiar']) ? '1' : '0';
                 $allowTrade = isset($_POST['negociar']) ? '1' : '0';
@@ -57,7 +72,8 @@
 
 
             $updateUserSettings = $db->prepare("UPDATE player_settings SET hide_online = ?, 
-                                                                        hide_last_online = ?, 
+                                                                        hide_last_online = ?,
+                                                                        allow_friend_requests = ?,
                                                                         allow_follow = ?, 
                                                                         allow_mimic = ?, 
                                                                         allow_trade = ?,
@@ -66,12 +82,13 @@
                                                                         ");
                 $updateUserSettings->bindValue(1, $hideOnline);
                 $updateUserSettings->bindValue(2, $lastOnline);
-                $updateUserSettings->bindValue(3, $follow);
-                $updateUserSettings->bindValue(4, $copyFigure);
-                $updateUserSettings->bindValue(5, $allowTrade);
-                $updateUserSettings->bindValue(6, $whispers);
-                $updateUserSettings->bindValue(7, $allowSex);
-                $updateUserSettings->bindValue(8, User::userData('id'));
+                $updateUserSettings->bindValue(3, $amizade);
+                $updateUserSettings->bindValue(4, $follow);
+                $updateUserSettings->bindValue(5, $copyFigure);
+                $updateUserSettings->bindValue(6, $allowTrade);
+                $updateUserSettings->bindValue(7, $whispers);
+                $updateUserSettings->bindValue(8, $allowSex);
+                $updateUserSettings->bindValue(9, User::userData('id'));
 
                 $updateUserSettings->execute();
 
