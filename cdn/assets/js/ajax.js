@@ -9,6 +9,33 @@ ajax['register'] = API + '/register';
 ajax['reaction'] = API + '/reaction';
 ajax['deleteTags'] = API + '/deleteTags';
 
+// select-html
+$(document).on('click', '.close-modal', function() {
+
+	$('.modal-container').removeClass('active');
+
+});
+
+$('#html-v').on('click', function () {
+	var dataModal = $(this).attr('data-modal');
+
+	$('.modal-container[data-modal="' + dataModal + '"]').addClass('active');	
+	
+});
+
+// select-flash
+$(document).on('click', '.close-modal', function() {
+
+	$('.modal-container').removeClass('active');
+
+});
+
+$('#flash-v').on('click', function () {
+	var dataModal = $(this).attr('data-modal');
+
+	$('.modal-container[data-modal="' + dataModal + '"]').addClass('active');	
+	
+});
 
 //Form
 $(document).on('click', '.close-modal', function() {
