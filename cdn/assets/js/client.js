@@ -164,3 +164,85 @@ $(document).on('submit', 'form.set-client-beta-60', function() {
 
 	return false;
 });
+
+// APLICATIVO E PUFFIN
+
+$(document).on('submit', 'form.download-app', function() {
+	var form = $(this),
+	lastButton = form.find('button[type="submit"').html(),
+	data = {
+		order: 'download-app',
+	}
+
+	$.ajax({
+		url: '/api/client',
+		type: 'POST',
+		data: data,
+		beforeSend: function() {
+			form.find('.form-warns').empty();
+			form.find('.error-input').removeClass('error-input');
+			form.find('.error-input-warn').empty();
+
+			form.find('button[type="submit"]').attr('disabled', 'disabled');
+			form.find('button[type="submit"]').html('<div class="loader-button"></div>');
+		},
+		dataType: 'json',
+		success: function(data) {
+			if (data['response'] == 'success') {
+
+                window.open('https://mega.nz/file/92R1wKjK#lO4K6Qb8hZ-KSLcXocWfsjfTryc5kWLa66-cUVal93o', '_blank')
+			} else {
+                button.animate({
+                    'opacity': '1'
+                });
+			}
+
+			setTimeout(function() {
+				form.find('button[type="submit"]').removeAttr('disabled', 'disabled');
+				form.find('button[type="submit"]').html(lastButton);
+			}, 500);
+		}
+	});
+
+	return false;
+});
+
+$(document).on('submit', 'form.download-puffin', function() {
+	var form = $(this),
+	lastButton = form.find('button[type="submit"').html(),
+	data = {
+		order: 'download-puffin',
+	}
+
+	$.ajax({
+		url: '/api/client',
+		type: 'POST',
+		data: data,
+		beforeSend: function() {
+			form.find('.form-warns').empty();
+			form.find('.error-input').removeClass('error-input');
+			form.find('.error-input-warn').empty();
+
+			form.find('button[type="submit"]').attr('disabled', 'disabled');
+			form.find('button[type="submit"]').html('<div class="loader-button"></div>');
+		},
+		dataType: 'json',
+		success: function(data) {
+			if (data['response'] == 'success') {
+
+                window.open('https://play.google.com/store/apps/details?id=com.cloudmosa.puffinFree&hl=pt_BR&gl=US')
+			} else {
+                button.animate({
+                    'opacity': '1'
+                });
+			}
+
+			setTimeout(function() {
+				form.find('button[type="submit"]').removeAttr('disabled', 'disabled');
+				form.find('button[type="submit"]').html(lastButton);
+			}, 500);
+		}
+	});
+
+	return false;
+});

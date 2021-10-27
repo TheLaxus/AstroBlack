@@ -104,7 +104,7 @@
 				<div class="col-12">
 					<div id="content-box">
 						<div class="title-box png20">
-							Escolha a versão que deseja jogar o <?= HOTELNAME;?> Hotel!
+							Escolha a versão que deseja jogar o <?= HOTELNAME;?> Hotel no HTML5!
 						</div>
 					</div>
 				</div>
@@ -124,7 +124,7 @@
 							<div class="title-v">JOGAR VERSÃO FLASH (ANTIGO)</div>
 							<div class="png20"></div>
 						</div>
-						<button type="submit" class="btn green save" id="flash-v" data-modal="flash" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Jogar versão FLASH</button>
+						<button type="submit" class="btn green save" disabled id="flash-v" data-modal="flash" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Jogar versão FLASH</button>
 					</div>
 				</div>
 
@@ -135,7 +135,9 @@
 							<div class="desc-v">Jogue sem usar o navegador somente baixando o nosso aplicativo exclusivo.</div>
 							<div class="png20"></div>
 						</div>
+						<form method="POST" class="download-app">
 						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo windows</button>
+						</form>
 					</div>
 				</div>
 
@@ -146,7 +148,9 @@
 							<br>
 							<div class="png20"></div>
 						</div>
+						<form method="POST" class="download-puffin">
 						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -203,11 +207,12 @@
 					</div>
 				</div>
 			</div>
-			<script src="<?= CDN; ?>/assets/js/client.js?<?=TIME?>"></script>
 
 			<script type="text/javascript" src="<?= CDN; ?>/assets/js/jquery.js?<?= TIME; ?>"></script>
 			<script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
 			<script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
+			<script src="<?= CDN; ?>/assets/js/client.js?<?=TIME?>"></script>
+
 			<?php } 
 				} else {  ?>
 				<div class="flash-disabled-container flex" style="z-index: 99999 !important; background: url(../img/background.png) rgb(53, 53, 53);">
@@ -248,7 +253,9 @@
 							<div class="desc-v">Jogue sem usar o navegador somente baixando o nosso aplicativo exclusivo.</div>
 							<div class="png20"></div>
 						</div>
-						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo windows</button>
+						<form method="POST" class="download-app">
+						<button type="submit" class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo windows</button>
+						</form>>
 					</div>
 				</div>
 
@@ -259,7 +266,9 @@
 							<br>
 							<div class="png20"></div>
 						</div>
-						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo</button>
+						<form method="POST" class="download-puffin">
+						<button type="submit" class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -316,11 +325,16 @@
 					</div>
 				</div>
 			</div>
-			<?php } ?>
-			<script src="<?= CDN; ?>/assets/js/client.js?<?=TIME?>"></script>
-
 			<script type="text/javascript" src="<?= CDN; ?>/assets/js/jquery.js?<?= TIME; ?>"></script>
 			<script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
 			<script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
+			<script src="<?= CDN; ?>/assets/js/client.js?<?=TIME?>"></script>
+
+			<?php } ?>
+			<script type="text/javascript" src="<?= CDN; ?>/assets/js/jquery.js?<?= TIME; ?>"></script>
+			<script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
+			<script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
+						<script src="<?= CDN; ?>/assets/js/client.js?<?=TIME?>"></script>
+
 </body>
 </html>

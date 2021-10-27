@@ -126,6 +126,14 @@
 					"response" => 'success'
 				]);
 			}
+		} else if ($order == "download-app") {
+			echo json_encode([
+				"response" => 'success'
+			]);
+		} else if ($order == "download-puffin") {
+			echo json_encode([
+				"response" => 'success'
+			]);
 		}
 
 	} else {

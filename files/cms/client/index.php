@@ -245,7 +245,9 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 							<div class="desc-v">Jogue sem usar o navegador somente baixando o nosso aplicativo exclusivo.</div>
 							<div class="png20"></div>
 						</div>
-						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo windows</button>
+						<form method="POST" class="download-app">
+							<button type="submit" class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo windows</button>
+						</form>
 					</div>
 				</div>
 
@@ -256,7 +258,9 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 							<br>
 							<div class="png20"></div>
 						</div>
+						<form method="POST" class="download-puffin">
 						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -450,6 +454,8 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 				</div>
 			</div>
 		</div>-->
+		<script src="<?= CDN; ?>/assets/js/client.js?<?=TIME?>"></script>
+
 			<script type="text/javascript" src="<?= CDN; ?>/assets/js/jquery.js?<?= TIME; ?>"></script>
 			<script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
 			<script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
