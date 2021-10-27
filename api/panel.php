@@ -1265,7 +1265,7 @@
 			$interactionCount = (isset($_POST['interactionCount'])) ? $_POST['interactionCount'] : '';
 			$vendingsId = (isset($_POST['vendingsId'])) ? $_POST['vendingsId'] : '';
 			$variableHeight = (isset($_POST['variableHeight'])) ? $_POST['variableHeight'] : '';
-			$effectId = (isset($_POST['effect_id'])) ? $_POST['effect_id'] : '';
+			$effectId = (isset($_POST['effectId'])) ? $_POST['effectId'] : '';
 			$description = (isset($_POST['description'])) ? $_POST['description'] : '';
 			$canLayon = (isset($_POST['canLayon'])) ? $_POST['canLayon'] : '';
 			$requireRights = (isset($_POST['requireRights'])) ? $_POST['requireRights'] : '';

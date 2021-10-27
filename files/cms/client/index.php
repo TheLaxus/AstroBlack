@@ -56,6 +56,8 @@ $consult_client_version->execute();
 $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 
 
+
+
 ?>
 <!DOCTYPE html>
 <html oncontextmenu="false">
@@ -147,7 +149,7 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 		}
 	}
 	?>
-	<script src="<?= CDN; ?>/assets/js/client.js"></script>
+	<script src="<?= CDN; ?>/assets/js/client.js?<?=TIME?>"></script>
 	<!--<script src="<?= CDN; ?>/assets/js/socket.js"></script>-->
 
 </head>

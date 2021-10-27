@@ -73,6 +73,7 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<link rel="stylesheet" href="<?= URL; ?>/game/styles.3f08ab665bffd7c30247.css">
+
 </head>
 <body>
 <?php
@@ -94,11 +95,232 @@
   	<script>console.log('%c Lella HTML5 desenvolvido por Emerson, Laxus e Wake. %c\nAgradecimentos à: Billsonnn e desenvolvedores do Nitro.', 'color: #black; font-size: 13pt; padding: 20px;', 'font-size: 9pt; padding: 5px 20px 20px;');</script>
 
 	  <?php
-		}
-	} else {
-		Redirect(URL . '/client');
-	}
-	?>
+		} else {?>
 
+<div class="flash-disabled-container flex" style="z-index: 99999 !important; background: url(../img/background.png) rgb(53, 53, 53);">
+		<div class="container">
+			<div class="row">
+				<div class="logo"></div>
+				<div class="col-12">
+					<div id="content-box">
+						<div class="title-box png20">
+							Escolha a versão que deseja jogar o <?= HOTELNAME;?> Hotel!
+						</div>
+					</div>
+				</div>
+				<div class="col-6">
+					<div id="content-box">
+						<div class="title-box png20 bg-h">
+							<div class="title-v">JOGAR VERSÃO HTML (NOVO)</div>
+							<div class="png20"></div>
+						</div>
+						<button type="submit" class="btn purple save" id="html-v" data-modal="html" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Jogar versão HTML</button>
+					</div>
+				</div>
+
+				<div class="col-6">
+					<div id="content-box">
+						<div class="title-box png20 bg-f">
+							<div class="title-v">JOGAR VERSÃO FLASH (ANTIGO)</div>
+							<div class="png20"></div>
+						</div>
+						<button type="submit" class="btn green save" id="flash-v" data-modal="flash" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Jogar versão FLASH</button>
+					</div>
+				</div>
+
+				<div class="col-7">
+					<div id="content-box">
+						<div class="title-box png20 bg-o-a">
+							<div class="title-v">JOGAR COM APLICATIVO (PC)</div>
+							<div class="desc-v">Jogue sem usar o navegador somente baixando o nosso aplicativo exclusivo.</div>
+							<div class="png20"></div>
+						</div>
+						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo windows</button>
+					</div>
+				</div>
+
+				<div class="col-5">
+					<div id="content-box">
+						<div class="title-box png20 bg-o">
+							<div class="title-v">JOGAR NO PUFFIN (ANDROID/IOS)</div>
+							<br>
+							<div class="png20"></div>
+						</div>
+						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo</button>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="modal-container" id="html" data-modal="html">
+				<div id="modal-content">
+					<div id="news-modal">
+						<div class="col-12">
+							<div id="content-box" style="height:190px;">
+								<div class="title-box png20">
+									<div class="title"> ESCOLHA O TIPO DE CLIENT (HTML)</div>
+									<button type="ok" class="close close-modal" style="position:relative;top:-20px;float:right;right:14px"></button>
+
+									<div class="margin-top-min">
+										<div class="set-client-version">
+										<form method="POST" class="set-client-beta-24">
+											<button type="submit" class="btn purple big next-register" versionBeta_24="24" class="button" style="width: 100%; height: 45px;margin-bottom:7px;margin-top:20px">Jogar em 24 fps</button>
+										</form>	
+										<form method="POST" class="set-client-beta-60">
+											<button type="submit" class="btn purple big next-register" versionBeta_60="60" class="button" style="width: 100%; height: 45px;">Jogar em 60 fps</button>
+										</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-container" id="flash" data-modal="flash">
+				<div id="modal-content">
+					<div id="news-modal">
+						<div class="col-12">
+							<div id="content-box" style="height:190px;">
+								<div class="title-box png20">
+									<div class="title"> ESCOLHA O TIPO DE CLIENT (FLASH)</div>
+									<button type="ok" class="close close-modal" style="position:relative;top:-20px;float:right;right:14px"></button>
+
+									<div class="margin-top-min">
+										<div class="set-client-version">
+										<form method="POST" class="set-client-flash-24">
+											<button type="submit" class="btn purple big next-register" version_24="24" class="button" style="width: 100%; height: 45px;margin-bottom:7px;margin-top:20px">Jogar em 24 fps</button>
+										</form>
+										<form method="POST" class="set-client-flash-60">
+											<button type="submit" class="btn purple big next-register" version_60="60" class="button" style="width: 100%; height: 45px;">Jogar em 60 fps</button>
+										</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script src="<?= CDN; ?>/assets/js/client.js?<?=TIME?>"></script>
+
+			<script type="text/javascript" src="<?= CDN; ?>/assets/js/jquery.js?<?= TIME; ?>"></script>
+			<script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
+			<script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
+			<?php } 
+				} else {  ?>
+				<div class="flash-disabled-container flex" style="z-index: 99999 !important; background: url(../img/background.png) rgb(53, 53, 53);">
+		<div class="container">
+			<div class="row">
+				<div class="logo"></div>
+				<div class="col-12">
+					<div id="content-box">
+						<div class="title-box png20">
+							Escolha a versão que deseja jogar o <?= HOTELNAME;?> Hotel!
+						</div>
+					</div>
+				</div>
+				<div class="col-6">
+					<div id="content-box">
+						<div class="title-box png20 bg-h">
+							<div class="title-v">JOGAR VERSÃO HTML (NOVO)</div>
+							<div class="png20"></div>
+						</div>
+						<button type="submit" class="btn purple save" id="html-v" data-modal="html" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Jogar versão HTML</button>
+					</div>
+				</div>
+
+				<div class="col-6">
+					<div id="content-box">
+						<div class="title-box png20 bg-f">
+							<div class="title-v">JOGAR VERSÃO FLASH (ANTIGO)</div>
+							<div class="png20"></div>
+						</div>
+						<button type="submit" class="btn green save" id="flash-v" data-modal="flash" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Jogar versão FLASH</button>
+					</div>
+				</div>
+
+				<div class="col-7">
+					<div id="content-box">
+						<div class="title-box png20 bg-o-a">
+							<div class="title-v">JOGAR COM APLICATIVO (PC)</div>
+							<div class="desc-v">Jogue sem usar o navegador somente baixando o nosso aplicativo exclusivo.</div>
+							<div class="png20"></div>
+						</div>
+						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo windows</button>
+					</div>
+				</div>
+
+				<div class="col-5">
+					<div id="content-box">
+						<div class="title-box png20 bg-o">
+							<div class="title-v">JOGAR NO PUFFIN (ANDROID/IOS)</div>
+							<br>
+							<div class="png20"></div>
+						</div>
+						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo</button>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="modal-container" id="html" data-modal="html">
+				<div id="modal-content">
+					<div id="news-modal">
+						<div class="col-12">
+							<div id="content-box" style="height:190px;">
+								<div class="title-box png20">
+									<div class="title"> ESCOLHA O TIPO DE CLIENT (HTML)</div>
+									<button type="ok" class="close close-modal" style="position:relative;top:-20px;float:right;right:14px"></button>
+
+									<div class="margin-top-min">
+										<div class="set-client-version">
+										<form method="POST" class="set-client-beta-24">
+											<button type="submit" class="btn purple big next-register" versionBeta_24="24" class="button" style="width: 100%; height: 45px;margin-bottom:7px;margin-top:20px">Jogar em 24 fps</button>
+										</form>	
+										<form method="POST" class="set-client-beta-60">
+											<button type="submit" class="btn purple big next-register" versionBeta_60="60" class="button" style="width: 100%; height: 45px;">Jogar em 60 fps</button>
+										</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-container" id="flash" data-modal="flash">
+				<div id="modal-content">
+					<div id="news-modal">
+						<div class="col-12">
+							<div id="content-box" style="height:190px;">
+								<div class="title-box png20">
+									<div class="title"> ESCOLHA O TIPO DE CLIENT (FLASH)</div>
+									<button type="ok" class="close close-modal" style="position:relative;top:-20px;float:right;right:14px"></button>
+
+									<div class="margin-top-min">
+										<div class="set-client-version">
+										<form method="POST" class="set-client-flash-24">
+											<button type="submit" class="btn purple big next-register" version_24="24" class="button" style="width: 100%; height: 45px;margin-bottom:7px;margin-top:20px">Jogar em 24 fps</button>
+										</form>
+										<form method="POST" class="set-client-flash-60">
+											<button type="submit" class="btn purple big next-register" version_60="60" class="button" style="width: 100%; height: 45px;">Jogar em 60 fps</button>
+										</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?php } ?>
+			<script src="<?= CDN; ?>/assets/js/client.js?<?=TIME?>"></script>
+
+			<script type="text/javascript" src="<?= CDN; ?>/assets/js/jquery.js?<?= TIME; ?>"></script>
+			<script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
+			<script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
 </body>
 </html>

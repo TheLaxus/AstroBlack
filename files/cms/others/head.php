@@ -48,6 +48,8 @@
 
 		<script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
 		<script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
+		<script type="text/javascript" src="<?= CDN; ?>/assets/js/online.js?<?= TIME; ?>"></script>
+
 
 </head>
 <body>

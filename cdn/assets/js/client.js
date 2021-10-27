@@ -3,7 +3,7 @@ $(document).on('submit', 'form.set-client-flash-24', function() {
 	var form = $(this),
 	lastButton = form.find('button[type="submit"').html(),
 	data = {
-		order: 'version',
+		order: 'version-24',
 		version24: form.find('button[type="submit"').attr('version_24')
 	}
 
@@ -23,7 +23,7 @@ $(document).on('submit', 'form.set-client-flash-24', function() {
 		success: function(data) {
 			if (data['response'] == 'success') {
 
-                window.location.reload();
+                window.location = "client"
 			} else {
                 button.animate({
                     'opacity': '1'
@@ -44,7 +44,7 @@ $(document).on('submit', 'form.set-client-flash-60', function() {
 	var form = $(this),
 	lastButton = form.find('button[type="submit"').html(),
 	data = {
-		order: 'version',
+		order: 'version-60',
 		version60: form.find('button[type="submit"').attr('version_60')
 	}
 
@@ -64,7 +64,7 @@ $(document).on('submit', 'form.set-client-flash-60', function() {
 		success: function(data) {
 			if (data['response'] == 'success') {
 
-                window.location.reload();
+                window.location = "client"
 			} else {
                 button.animate({
                     'opacity': '1'
@@ -87,7 +87,7 @@ $(document).on('submit', 'form.set-client-beta-24', function() {
 	var form = $(this),
 	lastButton = form.find('button[type="submit"').html(),
 	data = {
-		order: 'version-beta',
+		order: 'version-beta-24',
 		versionBeta_24: form.find('button[type="submit"').attr('versionBeta_24')
 	}
 
@@ -128,7 +128,7 @@ $(document).on('submit', 'form.set-client-beta-60', function() {
 	var form = $(this),
 	lastButton = form.find('button[type="submit"').html(),
 	data = {
-		order: 'version-beta',
+		order: 'version-beta-60',
 		versionBeta_60: form.find('button[type="submit"').attr('versionBeta_60')
 	}
 

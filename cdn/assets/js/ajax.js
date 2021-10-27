@@ -610,3 +610,33 @@ $(document).on('submit', 'form.form-addtag', function(e) {
 
 	return false;
 });
+$(document).on('click', '.png20 > button', function() {
+    var button = $(this),
+        data = {
+            order: 'delete-tag',
+            tag_id: $(this).attr('tagId')
+        }
+
+    $.ajax({
+        url: '/api/tags',
+        type: 'POST',
+        data: data,
+        dataType: 'json',
+        beforeSend: function() {
+
+            button.animate({
+                'opacity': '0.8'
+            });
+        },
+        success: function(data) {
+            if (data['response']) {
+                window.location.reload();
+            } else {
+
+                button.animate({
+                    'opacity': '1'
+                });
+            }
+        }
+    });
+});
