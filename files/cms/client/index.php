@@ -178,14 +178,14 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 	if ($consult_client_version->rowCount() > 0) { 
 		if ($result_client_version['version'] != '0') {
 ?>
-<div class="flash-disabled-container flex" style="z-index: 99999 !important; background: url(../img/background.png) rgb(53, 53, 53);">
+<div id="flash-container" style="z-index: 99999 !important;">
 		<div class="container">
 			<div class="row">
 				<div class="logo"></div>
 				<div class="col-12">
 					<div id="content-box">
 					<div class="title-box png20">
-							Seu navegador não suporta mais o <b>Flash Player</b> Escolha uma das opções abaixo!
+							Seu navegador não suporta mais o <b>Flash Player</b>! Escolha uma das opções abaixo para continuar jogando o <?= HOTELNAME;?>.
 						</div>
 					</div>
 				</div>
