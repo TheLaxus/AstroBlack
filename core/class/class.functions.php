@@ -39,8 +39,11 @@ class Functions
 		$stmt = $db->prepare("SELECT " . $key . " FROM player_settings WHERE player_id = :id");
 		$stmt->bindParam(':id', $playerId);
 		$stmt->execute();
-		$row = $stmt->fetch();
-		return $row[$key];
+		if ($stmt->rowCount() > 0 ) {
+			$row = $stmt->fetch();
+			return $row[$key];
+		}
+
 	}
 
     static function insertRowInArchive($msg, $arquivo)

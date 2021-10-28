@@ -50,18 +50,13 @@ $Template->AddTemplate('others', 'head');
                              $clientFPS = $db->prepare("SELECT * FROM cms_clients WHERE user_id = ?");
                              $clientFPS->bindValue(1, User::userData('id'));
                              $clientFPS->execute();
+                             $showFPS = $clientFPS->fetch(PDO::FETCH_ASSOC);
 
                              $clientFPS_beta = $db->prepare("SELECT * FROM cms_clients_beta WHERE user_id = ?");
                              $clientFPS_beta->bindValue(1, User::userData('id'));
                              $clientFPS_beta->execute();
+                             $betaFPS = $clientFPS_beta->fetch(PDO::FETCH_ASSOC);
 
-                             if ($clientFPS_beta->rowCount() > 0) {
-                                 $betaFPS = $clientFPS_beta->fetch(PDO::FETCH_ASSOC);
-                             }
-                             
-                             if ($clientFPS->rowCount() > 0) {
-                                $showFPS = $clientFPS->fetch(PDO::FETCH_ASSOC);
-                             } 
                             ?>
 
                     <label for="old-mail">Missão</label>
@@ -71,6 +66,9 @@ $Template->AddTemplate('others', 'head');
                         <div class="desc" style="margin: 0 0 20px 0">Sua missão atual que aparecerá no seu perfil.</div>
                     </div>
 
+                    <?php if ($clientFPS->rowCount() > 0) {
+                        if ($showFPS['version'] != 0) {
+                    ?>
                     <div class="line"></div>
 
                 <label>Versão da client (FLASH)</label>
@@ -81,7 +79,11 @@ $Template->AddTemplate('others', 'head');
                                         <option value="60" <?= $showFPS['version'] == '60' ? 'selected' : '' ?>>60 FPS (MELHORADA)</option>
                                     </select>
                                     </div>
+                <?php } } ?>
 
+                <?php if ($clientFPS_beta->rowCount() > 0) {
+                    if ($betaFPS['version'] != 0) { ?>
+                
                 <label>Versão da client (BETA)</label>
                 <div class="desc">Escolha conforme a sua performance do PC</div>
                 <div class="btnset">
@@ -91,7 +93,7 @@ $Template->AddTemplate('others', 'head');
                             </select>
                             </div>
                             <div class="line"></div>
-
+                        <?php } } ?>
                         <label>Estado online?</label>
                         <div class="desc">Permitir que outros usuários vejam quando você estiver online? </div>
                         <div class="optionset">
