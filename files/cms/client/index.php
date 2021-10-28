@@ -178,33 +178,80 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 	if ($consult_client_version->rowCount() > 0) { 
 		if ($result_client_version['version'] != '0') {
 ?>
-	<div id="flash-container" style="z-index: 99999 !important;">
-		<div class="flash-disabled-container flex" style="background: url(../img/background.png) rgb(53, 53, 53);">
-			<div class="flash-disabled-content flex margin-auto">
-				<div class="frank margin-right-md"></div>
-				<div class="margin-auto-top-bottom flex-column">
-					<label class="gray flex-column">
-						<h1 class="bold uppercase margin-bottom-minm">Você está quase lá!</h1>
-						<h5 class="margin-bottom-min">Agora so falta você permitir que o seu navegador possa executar o flash player para poder jogar.</h5>
-						<h5 class="margin-bottom-min">E muito fácil! Basta você clicar no botão <b>Entrar no Hotel</b> e logo em seguida clicar em <b>Permitir</b> para poder executar o flash e você se juntar e desfrutar de toda a diversão que preparamos para você!</h5>
-						<div class="bg-2 padding-min general-radius">
-							<label class="flex-column">
-								<h5 class="margin-bottom-min uppercase">Não consegue ativar o <b>flash</b>?</h5>
-								<h6>Está tendo problemas com a ativação do flash? Client branca ou preta? Não se preocupe, para tudo há uma solução!<br><br>E para isto você pode clicar <a class="bold">aqui</a> para, talvez, encontrar um possível solução e saber mais sobre tal problema.</h6>
-							</label>
+<div class="flash-disabled-container flex" style="z-index: 99999 !important; background: url(../img/background.png) rgb(53, 53, 53);">
+		<div class="container">
+			<div class="row">
+				<div class="logo"></div>
+				<div class="col-12">
+					<div id="content-box">
+					<div class="title-box png20">
+							Seu navegador não suporta mais o <b>Flash Player</b> Escolha uma das opções abaixo!
 						</div>
-					</label>
-					<div class="flex margin-top-min margin-auto-left">
-						<a href="https://get.adobe.com/flashplayer/" class="green-button-1 no-link" style="width: 180px;height: 48px;">
-							<label class="margin-auto white">
-								<h5>Entrar no Hotel</h5>
-							</label>
-						</a>
+					</div>
+				</div>
+				<div class="col-7">
+					<div id="content-box">
+						<div class="title-box png20 bg-h">
+							<div class="title-v">JOGAR VERSÃO HTML (NOVO)</div>
+							<div class="png20"></div>
+						</div>
+						<button type="submit" class="btn purple save" id="html-v" data-modal="html" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Jogar versão HTML</button>
+					</div>
+				</div>
+
+				<div class="col-6">
+					<div id="content-box">
+						<div class="title-box png20 bg-o-a">
+							<div class="title-v">JOGAR COM APLICATIVO (PC)</div>
+							<div class="desc-v">Jogue sem usar o navegador somente baixando o nosso aplicativo exclusivo.</div>
+							<div class="png20"></div>
+						</div>
+						<form method="POST" class="download-app">
+							<button type="submit" class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo windows</button>
+						</form>
+					</div>
+				</div>
+
+				<div class="col-5">
+					<div id="content-box">
+						<div class="title-box png20 bg-o">
+							<div class="title-v">JOGAR NO PUFFIN (ANDROID/IOS)</div>
+							<br>
+							<div class="png20"></div>
+						</div>
+						<form method="POST" class="download-puffin">
+						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo</button>
+						</form>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+
+			<div class="modal-container" id="html" data-modal="html">
+				<div id="modal-content">
+					<div id="news-modal">
+						<div class="col-12">
+							<div id="content-box" style="height:190px;">
+								<div class="title-box png20">
+									<div class="title"> ESCOLHA O TIPO DE CLIENT (HTML)</div>
+									<button type="ok" class="close close-modal" style="position:relative;top:-20px;float:right;right:14px"></button>
+
+									<div class="margin-top-min">
+										<div class="set-client-version">
+										<form method="POST" class="set-client-beta-24">
+											<button type="submit" class="btn purple big next-register" versionBeta_24="24" class="button" style="width: 100%; height: 45px;margin-bottom:7px;margin-top:20px">Jogar em 24 fps</button>
+										</form>	
+										<form method="POST" class="set-client-beta-60">
+											<button type="submit" class="btn purple big next-register" versionBeta_60="60" class="button" style="width: 100%; height: 45px;">Jogar em 60 fps</button>
+										</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 	<?php } else { ?>
 
 	<div class="flash-disabled-container flex" style="z-index: 99999 !important; background: url(../img/background.png) rgb(53, 53, 53);">
