@@ -1993,6 +1993,114 @@
 
 			}
 
+		} else if ($order == "password") {
+			$username = (isset($_POST['username'])) ? $_POST['username'] : '';
+
+
+			if (empty($username)) {
+				echo json_encode([
+					"response" => 'error',
+					"input" => 'input[name="username"]',
+					"error" => [
+						"class" => 'div.col-input-separator:nth-child(2) > .error-input-warn',
+						"text" => 'O campo de usuário não pode ficar vázio.' 
+					]
+				]);
+			} else if (!User::userTaken($username)) {
+				echo json_encode([
+					"response" => 'error',
+					"input" => 'input[name="username"]',
+					"error" => [
+						"class" => 'div.col-input-separator:nth-child(2) > .error-input-warn',
+						"text" => 'Este usuário não existe no nosso banco de dados.' 
+					]
+				]);
+			} else if (User::userData('rank') < $ceo) {
+				echo json_encode([
+					"response" => 'error',
+					"input" => 'input[name="username"]',
+					"error" => [
+						"class" => 'div.col-input-separator:nth-child(2) > .error-input-warn',
+						"text" => 'Você não tem permissão para gerar um link de recuperação de senha.' 
+					]
+				]);
+			} else {
+				$getUserData = $db->prepare("SELECT id,username,rank FROM players WHERE username = ?");
+				$getUserData->bindValue(1, $username);
+				$getUserData->execute();
+				$validUser = $getUserData->rowCount() == 1;
+
+				if ($validUser) {
+					$result_user = $getUserData->fetch(PDO::FETCH_ASSOC);
+
+					$lastResetKey = $db->prepare("SELECT timestamp FROM cms_reset_password WHERE player_id = ? ORDER BY id DESC LIMIT 1");
+					$lastResetKey->bindValue(1, User::userData('id'));
+					$lastResetKey->execute();
+
+					$time = $lastResetKey->rowCount() > 0 ? $lastResetKey->fetch()['timestamp'] : 0;
+
+					if (($time + (60 * 3)) > time()) {
+						echo json_encode([
+							"response" => 'error',
+							"input" => 'input[name="username"]',
+							"error" => [
+								"class" => 'div.col-input-separator:nth-child(2) > .error-input-warn',
+								"text" => 'Espere 3 minutos antes de solicitar um novo link de redefinição de senha.' 
+							]
+						]);
+					} else {
+						$resetKeyhash = md5(str_shuffle(1290 * 3 + $user['id']));
+
+						$insert = $db->prepare('INSERT INTO cms_reset_password(player_id, staff_id, reset_key, reg_ip, last_ip, timestamp, enabled) VALUES (?,?,?,?,?,?,?)');
+						$insert->bindValue(1, $result_user['id']);
+						$insert->bindValue(2, User::userData('id'));
+						$insert->bindValue(3, $resetKeyhash);
+						$insert->bindValue(4, IP);
+						$insert->bindValue(5, IP);
+						$insert->bindValue(6, time());
+						$insert->bindValue(7, '1');
+						$insert->execute();
+
+						if ($insert->rowCount() > 0) {		
+							$insert_panel_log = $db->prepare("INSERT INTO cms_panel_logs (label) VALUES (?)");
+							$insert_panel_log->bindValue(1, 'reset-password;' . $user['username'] . ';' . TIME . ';' . IP . ';success');
+							$insert_panel_log->execute();
+
+							echo json_encode([
+								"response" => 'success',
+								"append" => '<div class="form-warn success mr-bottom-1"><label class="flex-column"><h4 class="bold uppercase">Sucesso!</h4><h5>Link para redifinição de senha: <br><a href="/new-password/' . $resetKeyhash . '" target="_blank" style="text-decoration: none;color: #FFF;">'.URL."/new-password/".$resetKeyhash.'</a></h5></label></div>'
+							]);
+						}
+					}
+				}
+			}
+		} else if ($order == "view-fakes") {
+			$username = (isset($_POST['username'])) ? $_POST['username'] : '';
+
+			if (empty($username)) {
+				echo json_encode([
+					"response" => 'error',
+					"input" => 'input[name="username"]',
+					"error" => [
+						"class" => 'div.col-input-separator:nth-child(2) > .error-input-warn',
+						"text" => 'O campo de usuário não pode ficar vázio.' 
+					]
+				]);
+			} else if (!User::userTaken($username)) {
+				echo json_encode([
+					"response" => 'error',
+					"input" => 'input[name="username"]',
+					"error" => [
+						"class" => 'div.col-input-separator:nth-child(2) > .error-input-warn',
+						"text" => 'Este usuário não existe no nosso banco de dados.' 
+					]
+				]);
+			} else {
+				echo json_encode([
+					"response" => 'success',
+					"append" => '<div class="form-warn success mr-bottom-1"><label class="flex-column"><h4 class="bold uppercase">Encontrado!</h4><h5>Clique <a href="/panel/view-fakes/' . $username . '" target="_blank" style="text-decoration: none;color: #FFF;">AQUI</a> para visualizar as fakes.</h5></label></div>'
+				]);
+			}
 		}
 	} else {
 		echo 'Cannot get ' . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . '.';

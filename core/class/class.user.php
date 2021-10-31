@@ -14,6 +14,20 @@ class User {
 
     }
 
+    static function settingsById($key, $id) {
+        global $db;
+
+        $consultPlayer = $db->prepare("SELECT " . $key . " FROM player_settings WHERE player_id = ?");
+        $consultPlayer->bindValue(1, $id);
+        $consultPlayer->execute();
+        if ($consultPlayer->rowCount() > 0) {
+            $resultPlayer = $consultPlayer->fetch(PDO::FETCH_ASSOC);
+
+            return $resultPlayer[$key];
+        }
+
+    }
+
     static function bcryptHash($password) {
         return password_hash($password, PASSWORD_BCRYPT);
     }

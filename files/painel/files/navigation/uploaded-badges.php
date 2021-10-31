@@ -16,6 +16,11 @@
 <?php 
 	include('../others/sidebar.php');
 ?>
+                <style>
+                    td{
+                        text-align: center;
+                    }
+                </style>
 			<div class="content flex-column">
 				<div class="header-content flex">
 					<div class="sideBar-controller">

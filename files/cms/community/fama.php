@@ -47,11 +47,12 @@ $Template->AddTemplate('others', 'head');
                     </div>
 
                     <?php
-                    $consult_hall_currency = $db->prepare("SELECT username,figure,vip_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY vip_points + 0 DESC LIMIT 0,1");
+                    $consult_hall_currency = $db->prepare("SELECT username,figure,vip_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY vip_points + 0 DESC LIMIT 10");
                     $consult_hall_currency->bindValue(1, '0');
                     $consult_hall_currency->execute();
 
-                    while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
+                    if ($consult_hall_currency->rowCount() > 0) {
+                        while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                         <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
                             <div class="bg" style="height:82px"></div>
@@ -59,78 +60,14 @@ $Template->AddTemplate('others', 'head');
                                 <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
                                 <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username'] ?></font>
                                 </b>
-                                <div class="icon-gold"></div>
                                 <div class="motto" style="font-size:11px;top:17px;left:1px">
                                     <b><?= number_format($result_hall_currency['vip_points']) ?></b> diamantes<br />
                                 </div>
                             </div>
                         </div>
-                    <?php } ?>
-
-                    <?php
-                    $consult_hall_currency = $db->prepare("SELECT username,figure,vip_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY vip_points + 0 DESC LIMIT 1,1");
-                    $consult_hall_currency->bindValue(1, '0');
-                    $consult_hall_currency->execute();
-
-                    while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
+                    <?php }
+                        } else {
                     ?>
-                        <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
-                            <div class="bg" style="height:82px"></div>
-                            <div class="overlay">
-                                <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
-                                <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username']; ?></font>
-                                </b>
-                                <div class="icon-silver"></div>
-                                <div class="motto" style="font-size:11px;top:17px;left:1px">
-                                    <b><?= number_format($result_hall_currency['vip_points']); ?></b> diamantes<br />
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-
-                    <?php
-                    $consult_hall_currency = $db->prepare("SELECT username,figure,vip_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY vip_points + 0 DESC LIMIT 2,1");
-                    $consult_hall_currency->bindValue(1, '0');
-                    $consult_hall_currency->execute();
-
-                    while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                        <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
-                            <div class="bg" style="height:82px"></div>
-                            <div class="overlay">
-                                <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
-                                <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username']; ?></font>
-                                </b>
-                                <div class="icon-bronze"></div>
-                                <div class="motto" style="font-size:11px;top:17px;left:1px">
-                                    <b><?= number_format($result_hall_currency['vip_points']); ?></b> diamantes<br />
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-
-                    <?php
-                    $consult_hall_currency = $db->prepare("SELECT username,figure,vip_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY vip_points + 0 DESC LIMIT 3,3");
-                    $consult_hall_currency->bindValue(1, '0');
-                    $consult_hall_currency->execute();
-
-                    if ($consult_hall_currency->rowCount() > 0) {
-                        while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                            <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
-                                <div class="bg" style="height:82px"></div>
-                                <div class="overlay">
-                                    <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
-                                    <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username']; ?></font>
-                                    </b>
-                                    <div class="icon-arrow"></div>
-                                    <div class="motto" style="font-size:11px;top:17px;left:1px">
-                                        <b><?= number_format($result_hall_currency['vip_points']); ?></b> diamantes<br />
-                                    </div>
-                                </div>
-                            </div>
-                        <?php }
-                    } else { ?>
 
 
                         <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
@@ -152,88 +89,26 @@ $Template->AddTemplate('others', 'head');
                         <div class="title">Top duckets</div>
                     </div>
                     <?php
-                    $consult_hall_currency = $db->prepare("SELECT username,figure,activity_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY activity_points + 0 DESC LIMIT 0,1");
+                    $consult_hall_currency = $db->prepare("SELECT username,figure,activity_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY activity_points + 0 DESC LIMIT 10");
                     $consult_hall_currency->bindValue(1, '0');
                     $consult_hall_currency->execute();
-
-                    while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                        <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
-                            <div class="bg" style="height:82px"></div>
-                            <div class="overlay">
-                                <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
-                                <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username']; ?></font>
-                                </b>
-                                <div class="icon-gold"></div>
-                                <div class="motto" style="font-size:11px;top:17px;left:1px">
-                                    <b><?= number_format($result_hall_currency['activity_points']); ?></b> duckets<br />
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-                    <?php
-                    $consult_hall_currency = $db->prepare("SELECT username,figure,activity_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY activity_points + 0 DESC LIMIT 1,1");
-                    $consult_hall_currency->bindValue(1, '0');
-                    $consult_hall_currency->execute();
-
-                    while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                        <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
-                            <div class="bg" style="height:82px"></div>
-                            <div class="overlay">
-                                <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
-                                <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username']; ?></font>
-                                </b>
-                                <div class="icon-silver"></div>
-                                <div class="motto" style="font-size:11px;top:17px;left:1px">
-                                    <b><?= number_format($result_hall_currency['activity_points']); ?></b> duckets<br />
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-
-                    <?php
-                    $consult_hall_currency = $db->prepare("SELECT username,figure,activity_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY activity_points + 0 DESC LIMIT 2,1");
-                    $consult_hall_currency->bindValue(1, '0');
-                    $consult_hall_currency->execute();
-
-                    while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                        <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
-                            <div class="bg" style="height:82px"></div>
-                            <div class="overlay">
-                                <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
-                                <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username']; ?></font>
-                                </b>
-                                <div class="icon-bronze"></div>
-                                <div class="motto" style="font-size:11px;top:17px;left:1px">
-                                    <b><?= number_format($result_hall_currency['activity_points']); ?></b> duckets<br />
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-                    <?php
-                    $consult_hall_currency = $db->prepare("SELECT username,figure,activity_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY activity_points + 0 DESC LIMIT 3,3");
-                    $consult_hall_currency->bindValue(1, '0');
-                    $consult_hall_currency->execute();
-
+                        
                     if ($consult_hall_currency->rowCount() > 0) {
                         while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
                     ?>
-                            <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
-                                <div class="bg" style="height:82px"></div>
-                                <div class="overlay">
-                                    <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
-                                    <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username']; ?></font>
-                                    </b>
-                                    <div class="icon-arrow"></div>
-                                    <div class="motto" style="font-size:11px;top:17px;left:1px">
-                                        <b><?= number_format($result_hall_currency['activity_points']); ?></b> duckets<br />
-                                    </div>
+                        <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
+                            <div class="bg" style="height:82px"></div>
+                            <div class="overlay">
+                                <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
+                                <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username']; ?></font>
+                                </b>
+                                <div class="motto" style="font-size:11px;top:17px;left:1px">
+                                    <b><?= number_format($result_hall_currency['activity_points']); ?></b> duckets<br />
                                 </div>
                             </div>
-                        <?php }
-                    } else { ?>
+                        </div>
+                    <?php }
+                        } else { ?>
 
 
                         <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
@@ -254,89 +129,26 @@ $Template->AddTemplate('others', 'head');
                         <div class="title">Top crazzies</div>
                     </div>
                     <?php
-                    $consult_hall_currency = $db->prepare("SELECT username,figure,extra_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY extra_points + 0 DESC LIMIT 0,1");
-                    $consult_hall_currency->bindValue(1, '0');
-                    $consult_hall_currency->execute();
-
-                    while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                        <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
-                            <div class="bg" style="height:82px"></div>
-                            <div class="overlay">
-                                <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
-                                <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username']; ?></font>
-                                </b>
-                                <div class="icon-gold"></div>
-                                <div class="motto" style="font-size:11px;top:17px;left:1px">
-                                    <b><?= number_format($result_hall_currency['extra_points']); ?></b> crazzies<br />
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-                    <?php
-                    $consult_hall_currency = $db->prepare("SELECT username,figure,extra_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY extra_points + 0 DESC LIMIT 1,1");
-                    $consult_hall_currency->bindValue(1, '0');
-                    $consult_hall_currency->execute();
-
-                    while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                        <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
-                            <div class="bg" style="height:82px"></div>
-                            <div class="overlay">
-                                <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
-                                <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username']; ?></font>
-                                </b>
-                                <div class="icon-silver"></div>
-                                <div class="motto" style="font-size:11px;top:17px;left:1px">
-                                    <b><?= number_format($result_hall_currency['extra_points']); ?></b> crazzies<br />
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-                    <?php
-                    $consult_hall_currency = $db->prepare("SELECT username,figure,extra_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY extra_points + 0 DESC LIMIT 2,1");
-                    $consult_hall_currency->bindValue(1, '0');
-                    $consult_hall_currency->execute();
-
-                    while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                        <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
-                            <div class="bg" style="height:82px"></div>
-                            <div class="overlay">
-                                <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
-                                <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username']; ?></font>
-                                </b>
-                                <div class="icon-bronze"></div>
-                                <div class="motto" style="font-size:11px;top:17px;left:1px">
-                                    <b><?= number_format($result_hall_currency['extra_points']); ?></b> crazzies<br />
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-
-                    <?php
-                    $consult_hall_currency = $db->prepare("SELECT username,figure,extra_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY extra_points + 0 DESC LIMIT 3,3");
+                    $consult_hall_currency = $db->prepare("SELECT username,figure,extra_points FROM players WHERE rank < 6 AND fame_occult = ? ORDER BY extra_points + 0 DESC LIMIT 10");
                     $consult_hall_currency->bindValue(1, '0');
                     $consult_hall_currency->execute();
 
                     if ($consult_hall_currency->rowCount() > 0) {
-
-                        while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
+                    while ($result_hall_currency = $consult_hall_currency->fetch(PDO::FETCH_ASSOC)) {
                     ?>
-                            <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
-                                <div class="bg" style="height:82px"></div>
-                                <div class="overlay">
-                                    <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
-                                    <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username']; ?></font>
-                                    </b>
-                                    <div class="icon-arrow"></div>
-                                    <div class="motto" style="font-size:11px;top:17px;left:1px">
-                                        <b><?= number_format($result_hall_currency['extra_points']); ?></b> crazzies<br />
-                                    </div>
+                        <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
+                            <div class="bg" style="height:82px"></div>
+                            <div class="overlay">
+                                <div style="background:url(<?= AVATARIMAGE . $result_hall_currency['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif);margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
+                                <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_hall_currency['username']; ?></font>
+                                </b>
+                                <div class="motto" style="font-size:11px;top:17px;left:1px">
+                                    <b><?= number_format($result_hall_currency['extra_points']); ?></b> crazzies<br />
                                 </div>
                             </div>
-                        <?php }
-                    } else { ?>
+                        </div>                    
+                    <?php }
+                        } else { ?>
 
                         <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
                             <div class="bg" style="height:82px"></div>

@@ -37,8 +37,10 @@ $Template->AddTemplate('others', 'head');
 
 				<div id="news-content">
             <?php
-            $consult_last_slide_articles = $db->prepare("SELECT id,title,image,subtitle FROM cms_news WHERE category != ? ORDER BY timestamp DESC LIMIT 6");
+            $consult_last_slide_articles = $db->prepare("SELECT id,title,image,subtitle FROM cms_news WHERE category != ? AND is_draft = ? ORDER BY timestamp DESC LIMIT 6");
             $consult_last_slide_articles->bindValue(1, 'Campanhas');
+			$consult_last_slide_articles->bindValue(2, '0');
+
             $consult_last_slide_articles->execute();
 
             while ($result_last_slide_articles = $consult_last_slide_articles->fetch(PDO::FETCH_ASSOC)) {

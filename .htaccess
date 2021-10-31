@@ -15,6 +15,7 @@ RewriteRule ^article(|/)$ files/cms/articles/article.php
 
 RewriteRule ^client(|/)$ files/cms/client/index.php
 RewriteRule ^html5(|/)$ files/cms/client/index_beta.php
+
 RewriteRule ^community(|/)$ files/cms/community/community.php
 RewriteRule ^community/staff(|/)$ files/cms/community/staff.php
 RewriteRule ^community/colab(|/)$ files/cms/community/colaboracao.php
@@ -27,6 +28,10 @@ RewriteRule ^article/(..*)(|/)$ files/cms/articles/article.php?article_id=$1
 RewriteRule ^article(|/)$ files/cms/articles/article.php
 RewriteRule ^articles(|/)$ files/cms/articles/article.php
 
+# Others
+RewriteRule ^reset-password(|/)$ files/cms/others/reset-password.php
+
+#RewriteRule ^reset-password/([a-zA-Z0-9]+)(|/)$ files/cms/others/reset-password.php&reset_key=$1
 
 # Regras do Painel
 
@@ -57,6 +62,10 @@ RewriteRule ^panel/logs-painel(|/)$ files/painel/files/navigation/logs-panel.php
 RewriteRule ^panel/logs-changenick(|/)$ files/painel/files/navigation/logs-changenick.php
 RewriteRule ^panel/uploaded-badges(|/)$ files/painel/files/navigation/uploaded-badges.php
 RewriteRule ^panel/article/(..*)/forms(|/)$ files/painel/files/navigation/news-forms.php?article_id=$1
+RewriteRule ^panel/passwords(|/)$ files/painel/files/navigation/passwords.php
+RewriteRule ^panel/view-fakes(|/)$ files/painel/files/navigation/view-fakes.php
+
+RewriteRule ^panel/view-fakes/([.,a-zA-Z0-9_-]+)(|/)$ files/painel/files/navigation/view-fakes.php?user=$1
 
 
 ErrorDocument 404 /files/cms/others/error.php
