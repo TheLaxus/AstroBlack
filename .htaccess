@@ -83,3 +83,4 @@ RewriteRule ^api/badge(|/)$ api/actions/badge.php
 RewriteRule ^api/settings(|/)$ api/actions/settings.php
 RewriteRule ^api/tags(|/)$ api/actions/tags.php
 RewriteRule ^api/reset-password(|/)$ api/actions/reset-password.php
+RewriteRule ^api/radio(|/)$ api/radio.php

@@ -83,7 +83,10 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed|Ubuntu:300,300i,400,400i,500,500i,700,700i&display=swap">
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.2/howler.min.js"></script>
 	<script src="<?= CDN; ?>/assets/js/jquery.js?<?= TIME; ?>"></script>
+
+
 	<script src="<?= CDN; ?>/assets/js/swfobject.js?<?= TIME; ?>"></script>
 	<?php
 	if ($consult_client_version->rowCount() > 0) {
@@ -101,7 +104,7 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 					"external.texts.txt": "<?= $Hotel::Settings('external_flash_texts'); ?>?v=12",
 					"external.variables.txt": "<?= $Hotel::Settings('external_variables'); ?>?v=14",
 					"external.override.variables.txt": "<?= $Hotel::Settings('external_override_variables'); ?>?v=13",
-					"%63%6f%6e%6e%65%63%74%69%6f%6e%2e%69%6e%66%6f%2e%68%6f%73%74": "<?= Security::encode("127.0.0.1"); ?>",
+					"%63%6f%6e%6e%65%63%74%69%6f%6e%2e%69%6e%66%6f%2e%68%6f%73%74": "<?= Security::encode("102.165.46.178"); ?>",
 					"productdata.load.url": "<?= $Hotel::Settings('productdata'); ?>?v=1",
 					"furnidata.load.url": "<?= $Hotel::Settings('furnidata'); ?>?v=11",
 					"flash.dynamic.avatar.download.configuration": "<?= $Hotel::Settings('figuremap'); ?>?v=15",
@@ -138,13 +141,14 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 
 				var player = {
 					volume: 0.5,
-					url: ''
+					url: 'http://stream2.svrdedicado.org/8128/;'
 				};
 
 				swfobject.embedSWF('<?= $Hotel::Settings('flash_client_url'); ?>/Habbo<?= $result_client_version['version'];?>.swf?v=13', 'flash-container', '100%', '100%', '11.1.0', 'expressInstall.swf', clientvars, params, null, null);
 			</script>
+			
 			<script src="<?= CDN; ?>/assets/js/habboapi.js"></script>
-			<!-- <script src="<?= CDN; ?>/assets/js/radio.js?v=1"></script> -->
+			<script src="<?= CDN; ?>/assets/js/radio.js?v=1"></script>
 	<?php
 		}
 	}
@@ -173,12 +177,45 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 			<button class="client-notification-closeall bold fs-14 uppercase">Fechar tudo</button>
 			<div class="client-notification-area"></div>
 		</div>
+		<div class="haibbo-player-area">
+				<div class="haibbo-player maximized loadding" style="top: 0px">
+					<div class="player-min haibbo-player-large-control"></div>
+					<div class="haibbo-player-large flex-column">
+						<div class="haibbo-player-large-area flex">
+							<div class="haibbo-player-speaker">
+								<div class="haibbo-player-speaker-imager" style="background-image: unset;"></div>
+							</div>
+							<div class="haibbo-player-infos">
+								<div class="haibbo-player-infos-speaker">
+									<span>...</span>
+								</div>
+								<div class="haibbo-player-infos-programation">
+									<span>...</span>
+								</div>
+								<div class="haibbo-player-infos-listeners">
+									<span>... ouvintes</span>
+								</div>
+							</div>
+							<div class="haibbo-player-large-control"></div>
+						</div>
+						<div class="player-large-actions flex">
+							<div class="player-large-actions-volume">
+								<div class="player-large-actions-volume-bar"></div>
+							</div>
+							<div class="player-large-actions-playpause paused"></div>
+							<div class="player-large-actions-reconnect"></div>
+							<div class="player-large-actions-dragplayer"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 <?php 
 	if ($consult_client_version->rowCount() > 0) { 
 		if ($result_client_version['version'] != '0') {
 ?>
-<div id="flash-container" style="z-index: 99999 !important;">
+	<div id="flash-container" style="z-index: 99999 !important;">
 		<div class="container">
 			<div class="row">
 				<div class="logo"></div>
@@ -251,7 +288,6 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 					</div>
 				</div>
 			</div>
-
 	<?php } else { ?>
 
 	<div class="flash-disabled-container flex" style="z-index: 99999 !important; background: url(../img/background.png) rgb(53, 53, 53);">
@@ -293,7 +329,7 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 							<div class="png20"></div>
 						</div>
 						<form method="POST" class="download-app">
-							<button type="submit" class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo windows</button>
+						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo windows</button>
 						</form>
 					</div>
 				</div>
@@ -406,7 +442,9 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 							<div class="desc-v">Jogue sem usar o navegador somente baixando o nosso aplicativo exclusivo.</div>
 							<div class="png20"></div>
 						</div>
+						<form method="POST" class="download-app">
 						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo windows</button>
+						</form>
 					</div>
 				</div>
 
@@ -417,7 +455,9 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 							<br>
 							<div class="png20"></div>
 						</div>
+						<form method="POST" class="download-puffin">
 						<button class="btn purple save" style="float:right;position:relative;padding:10px;margin-top:-30px;left:-11px">Baixar aplicativo</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -501,9 +541,8 @@ $result_client_version = $consult_client_version->fetch(PDO::FETCH_ASSOC);
 				</div>
 			</div>
 		</div>-->
-		<script src="<?= CDN; ?>/assets/js/client.js?<?=TIME?>"></script>
-
-			<script type="text/javascript" src="<?= CDN; ?>/assets/js/jquery.js?<?= TIME; ?>"></script>
+			<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 			<script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
 			<script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
 </body>
