@@ -28,6 +28,9 @@
 						<label>
 							<h6 class="fs-12 uppercase">CEO</h6>
 						</label>
+						<li <?php if ($page_name == 'passwords') {?>class="visited"<?php } ?>>
+							<a href="<?= URL_PANEL; ?>/passwords">Recuperar conta</a>
+						</li>
 						<li <?php if ($page_name == 'Reset-Hall') {?>class="visited"<?php } ?>>
 							<a href="<?= URL_PANEL; ?>/reset-hall">Resetar Hall da Fama</a>
 						</li>
