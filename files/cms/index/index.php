@@ -65,7 +65,7 @@
 			<div class="header-content flex mr-bottom-4">
 				<div class="row mr-auto-top">
 					<div class="col-md-12 flex">
-						<div class="logo mr-auto-top-bottom"></div>
+						<div class="logo mr-auto-top-bottom" id="logo-index"></div>
 						<!--<div class="online-count mr-auto-top-bottom flex">
 							<h5 class="color-2 mr-auto-top-bottom"><?= USERS; ?></h5>
 						</div>-->
