@@ -29,9 +29,9 @@ RewriteRule ^article(|/)$ files/cms/articles/article.php
 RewriteRule ^articles(|/)$ files/cms/articles/article.php
 
 # Others
-RewriteRule ^reset-password(|/)$ files/cms/others/reset-password.php
+#RewriteRule ^reset-password(|/)$ files/cms/others/reset-password.php
 
-#RewriteRule ^reset-password/([a-zA-Z0-9]+)(|/)$ files/cms/others/reset-password.php&reset_key=$1
+RewriteRule ^new-password/([a-zA-Z0-9]+)(|/)$ files/cms/others/reset-password.php?reset_key=$1
 
 # Regras do Painel
 
@@ -82,3 +82,4 @@ RewriteRule ^api/form(|/)$ api/actions/form.php
 RewriteRule ^api/badge(|/)$ api/actions/badge.php
 RewriteRule ^api/settings(|/)$ api/actions/settings.php
 RewriteRule ^api/tags(|/)$ api/actions/tags.php
+RewriteRule ^api/reset-password(|/)$ api/actions/reset-password.php

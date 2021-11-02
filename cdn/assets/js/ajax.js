@@ -640,3 +640,56 @@ $(document).on('click', '.png20 > button', function() {
         }
     });
 });
+
+$(document).on('submit', 'form.form-reset-password', function(e) {
+	var form = $(this),
+	lastButton = form.find('button[type="submit"]').html(),
+	data = {
+		order: 'reset-password',
+		resetKey: form.find('input[name="reset_key"]').val(),
+		newPassword: form.find('input[name="newpassword_reset"]').val(),
+		repeatPassword: form.find('input[name="repeatnewpassword"]').val()
+	}
+
+	$.ajax({
+
+		url: '/api/reset-password',
+		type: 'POST',
+		data: data,
+		beforeSend: function() {
+			form.find('.form-warns').empty();
+			form.find('.error-input').removeClass('error-input');
+			form.find('.error-input-warn').empty();
+
+			form.find('button[type="submit"]').attr('disabled', 'disabled');
+			form.find('button[type="submit"]').html('<div class="loader-button"></div>');
+		},
+		dataType: 'json',
+		success: function(data) {
+			if (data['response'] == 'success') {
+
+				window.scrollTo(0,0);
+
+				form.find('.form-warns').html(data['append']).hide().slideDown(700);
+				
+				setTimeout(function () {    
+					window.location = '/index'; 
+				}, 5000); // 5 seconds
+
+			} else {
+				form.find(data['input']).addClass('error-input');
+
+				if (data['error']) {
+					form.find(data['error']['class']).html(data['error']['text']);
+				}
+			}
+
+			setTimeout(function() {
+				form.find('button[type="submit"]').removeAttr('disabled', 'disabled');
+				form.find('button[type="submit"]').html(lastButton);
+			}, 500);
+		}
+	});
+
+	return false;
+});
