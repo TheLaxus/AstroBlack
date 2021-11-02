@@ -3,6 +3,10 @@
 
 	$Panel::Session('disconnected', $result_panel_user['rank']);
 
+	if ($result_panel_user['rank'] < $ceo) {
+		Redirect(URL_PANEL);
+	}
+
 	$page_id = 'passwords';
 	$page_name = 'passwords';
 	$page_title = 'Painel: Recuperar senha - ' . HOTELNAME;
