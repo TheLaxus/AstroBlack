@@ -118,12 +118,10 @@
 						
 						</li>
 						<li>
-							<a href="#">VIP<span><i class="far fa-angle-down"></i></span></a>
+							<a href="/shop/buy">VIP<span><i class="far fa-angle-down"></i></span></a>
 
 							<ul class="subnavi">
-								<li><a href="#">Sobre o VIP</a></li>
-								<li><a href="#">Membros VIP</a></li>
-								<li><a href="#">Perguntas frequentes</a></li>
+								<li><a href="/community/vips">Membros VIP</a></li>
 							</ul>
 						</li>
 						<li>
