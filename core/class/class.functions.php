@@ -23,9 +23,9 @@ class Functions
 			$consult_users_online->execute();
 
 			if ($consult_users_online->rowCount() == 1) {
-				$result = '<b>1</b> usuário conectado';
+				$result = '1 usuário conectado';
 			} else {
-				$result = '<b>' . $consult_users_online->rowCount() . '</b> usuários conectados';
+				$result = $consult_users_online->rowCount();
 			}
 		}
 

@@ -673,7 +673,7 @@ $(document).on('submit', 'form.form-reset-password', function(e) {
 				form.find('.form-warns').html(data['append']).hide().slideDown(700);
 				
 				setTimeout(function () {    
-					window.location = '/index'; 
+					window.location = '/'; 
 				}, 5000); // 5 seconds
 
 			} else {

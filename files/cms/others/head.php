@@ -41,15 +41,10 @@
 		<link rel="shortcut icon" href="<?= URL; ?>/favicon.ico?<?= time(); ?>">
 
 		<!--<link type="text/css" href="<?= CDN; ?>/assets/css/lella-c.css" rel="stylesheet">--><!--Tema claro-->
-		<link type="text/css" href="<?= CDN; ?>/assets/css/lella-e.css" rel="stylesheet"><!--Tema escuro-->
+		<link type="text/css" href="<?= CDN; ?>/assets/css/lella-e.css?<?= time(); ?>" rel="stylesheet"><!--Tema escuro-->
 		<link type="text/css" href="<?= CDN; ?>/assets/css/dutstrap.css" rel="stylesheet"><!--Tema escuro-->
 		<script type="text/javascript" src="<?= CDN; ?>/assets/js/vendor.js"></script>
         <script type="text/javascript" src="<?= CDN; ?>/assets/js/app.js"></script>
-
-		<script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
-		<script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>
-		<script type="text/javascript" src="<?= CDN; ?>/assets/js/online.js?<?= TIME; ?>"></script>
-
 
 </head>
 <body>
@@ -196,6 +191,5 @@
 		</div>
 	</div>
 </div>-->
-
 
 	

@@ -710,7 +710,7 @@ audio.stream-audio {
 .haibbo-player-large-control::after {
     content: "";
     position: relative;
-    background: url(../img/sprite.png) no-repeat -957px -221px;
+	background: url('../img/sprite_cms.png') no-repeat -957px -193px;
     width: 8px;
     height: 12px;
     margin: auto;
@@ -732,7 +732,7 @@ audio.stream-audio {
 .player-min.haibbo-player-large-control::after {
     content: "";
     position: relative;
-    background: url(../img/sprite.png) no-repeat -957px -221px;
+	background: url('../img/sprite_cms.png') no-repeat -946px -193px;
     width: 8px;
     height: 12px;
     margin: auto;
@@ -754,7 +754,7 @@ audio.stream-audio {
 }
 
 .haibbo-player.maximized > .haibbo-player-large {
-    left: 10px;
+    margin-left: 10px;
     transition: all 0.5s ease-in-out;
     filter: drop-shadow(0px 3px 0px rgba(0, 0, 0, 0.3));
     -webkit-filter: drop-shadow(0px 3px 0px rgba(0, 0, 0, 0.3));
@@ -765,7 +765,7 @@ audio.stream-audio {
 }
 
 .haibbo-player.minimized > .haibbo-player-large {
-    left: -310px;
+    margin-left: -310px;
     transition: all 0.5s ease-in-out;
 }
 

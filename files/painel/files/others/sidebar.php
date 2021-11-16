@@ -48,6 +48,9 @@
 						<label>
 							<h6 class="fs-12 uppercase">Gerência</h6>
 						</label>
+						<li <?php if ($page_name == 'viewfakes') {?>class="visited"<?php } ?>>
+							<a href="<?= URL_PANEL; ?>/view-fakes">Ver fakes</a>
+						</li>
 						<li <?php if ($page_name == 'CreatePage') {?>class="visited"<?php } ?>>
 							<a href="<?= URL_PANEL; ?>/create-page">Criar página catálogo</a>
 						</li>

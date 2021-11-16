@@ -152,6 +152,17 @@ include('../others/sidebar.php');
 							</div>
 							<div class="error-input-warn"></div>
 						</div>
+						<div class="col-input-separator flex-column">
+									<label>
+										<h5 class="fs-14 bold">Formulário</h5>
+										<h6 class="fs-12">Deseja ativar o formulário para esta notícia?.</h6>
+									</label>
+									<select name="form">
+										<option value="0" <?php if ($result_edit_article['form'] == '0') { ?> selected<?php } ?>>Não</option>
+										<option value="1" <?php if ($result_edit_article['form'] == '1') { ?> selected<?php } ?>>Sim</option>
+									</select>
+									<div class="error-input-warn"></div>
+								</div>
 					</div>
 					<div class="col-input-separator flex-column">
 						<label>

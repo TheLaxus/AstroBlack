@@ -3,6 +3,11 @@
 
 	$Panel::Session('disconnected', $result_panel_user['rank']);
 
+	if ($result_panel_user['rank'] < $manager) {
+		Redirect(URL_PANEL);
+	}
+
+
 	$page_id = 'giverank';
 	$page_name = 'give-rank';
 	$page_title = 'Painel: Gerenciar rank - ' . HOTELNAME;
@@ -53,7 +58,26 @@
 										<?php } ?>
 								</select>
 								<div class="error-input-warn"></div>
+							</div>							
+							<div class="col-input-separator flex-column mr-top-none">
+								<label>
+									<h5 class="fs-14">Defina uma função especifica</h5>
+								</label>
+								<input type="text" name="function_staff" autocomplete="off" placeholder="(não é obrigatório preencher.)">
+								<div class="error-input-warn"></div>
 							</div>
+							<div class="col-input-separator flex-column">
+								<label>
+									<h5 class="fs-14">Ocultar</h5>
+								</label>
+								
+								<select class="form-control" name="occult-rank">
+										<option value="0" selected>Não</option>
+										<option value="1">Sim</option>
+		
+								</select>
+								<div class="error-input-warn"></div>
+							</div>	
 							<div class="col-input-separator flex-column mr-bottom-2">
 
 							</div>

@@ -1,5 +1,5 @@
 <?php
-require_once('../../../global.php');
+require ('../../../global.php');
 
 $Hotel::Manutention($user['rank']);
 $Functions::Session('disconnected');

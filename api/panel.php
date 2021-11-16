@@ -8,9 +8,9 @@
 
 		# Ranks
 		$developer = '11';
-		$ceo = '10';
-		$manager = '9';
-		$administrator = '8';
+		$ceo = '9';
+		$manager = '8';
+		$administrator = '7';
 		$moderator = '6';
 
 		if ($order == 'login') {
@@ -110,7 +110,8 @@
 				$date_expire = (isset($_POST['date_expire'])) ? $_POST['date_expire'] : '';
 				$hour_expire = (isset($_POST['hour_expire'])) ? $_POST['hour_expire'] : '';
 				$use_badge = (isset($_POST['use_badge'])) ? $_POST['use_badge'] : '';
-				
+				$form = (isset($_POST['form'])) ? $_POST['form'] : '';
+
 
 
 				if ($category == 'Promoções' && empty($date_expire) && empty($hour_expire)) {
@@ -150,7 +151,7 @@
 							} else if ($use_badge == 1) {
 								$badgecode = (isset($_POST['badge_code'])) ? $_POST['badge_code'] : '';
 								
-								$insert_promo = $db->prepare("INSERT INTO cms_news (title, category, image, timestamp, timestamp_expire, subtitle, body, author, is_draft, use_badge, badge) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+								$insert_promo = $db->prepare("INSERT INTO cms_news (title, category, image, timestamp, timestamp_expire, subtitle, body, author, is_draft, use_badge, badge, form) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 								$insert_promo->bindValue(1, Functions::Filter('article', $title));
 								$insert_promo->bindValue(2, $category);
 								$insert_promo->bindValue(3, $thumbnail);
@@ -162,6 +163,7 @@
 								$insert_promo->bindValue(9, $draft);
 								$insert_promo->bindValue(10, $use_badge);
 								$insert_promo->bindValue(11, $badgecode);
+								$insert_promo->bindValue(12, $form);
 								$insert_promo->execute();
 
 								
@@ -174,7 +176,7 @@
 									"append" => '<div class="form-warn success mr-bottom-1"><label class="flex-column"><h4 class="bold uppercase">Sucesso!</h4><h5>Você publicou com sucesso esta noticia!</h5></label></div>'
 								]);
 							} else {
-								$insert_promo = $db->prepare("INSERT INTO cms_news (title, category, image, timestamp, timestamp_expire, subtitle, body, author, is_draft, use_badge) VALUES (?,?,?,?,?,?,?,?,?,?)");
+								$insert_promo = $db->prepare("INSERT INTO cms_news (title, category, image, timestamp, timestamp_expire, subtitle, body, author, is_draft, use_badge, form) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 								$insert_promo->bindValue(1, Functions::Filter('article', $title));
 								$insert_promo->bindValue(2, $category);
 								$insert_promo->bindValue(3, $thumbnail);
@@ -185,6 +187,7 @@
 								$insert_promo->bindValue(8, $user['id']);
 								$insert_promo->bindValue(9, $draft);
 								$insert_promo->bindValue(10, '0');
+								$insert_promo->bindValue(11, $form);
 								$insert_promo->execute();
 
 								$insert_panel_log = $db->prepare("INSERT INTO cms_panel_logs (label) VALUES (?)");
@@ -284,7 +287,7 @@
 				]);
 			} else {
 				$path_badge = DIR . SEPARATOR . 'swf/c_images/album1584/' . $badge_file['name'];
-				$path_text = DIR . SEPARATOR . 'swf/gamedata/external_flash_texts.txt';
+				$path_text = DIR . SEPARATOR . 'swf/gamedata/habbo_override_texts.txt';
 
 				$badge_name = str_replace('.gif', '', $badge_file['name']);
 
@@ -389,7 +392,7 @@
 			} else {
 				$result_if_exists_article = $consult_if_exists_article->fetch(PDO::FETCH_ASSOC);
 
-				if ($user['rank'] < $administrator || $result_if_exists_article['author'] != $user['id']) {
+				if (User::userData('rank') < $administrator || $result_if_exists_article['author'] != User::userData('id')) {
 					echo json_encode([
 						"response" => 'warn',
 						"append" => '<div class="form-warn error mr-bottom-1"><label class="flex-column"><h4 class="bold uppercase">Opps!</h4><h5>Parece que você não tem as permissões necessárias para editar estar noticia.</h5></label></div>'
@@ -441,6 +444,9 @@
 					} else {
 						$date_expire = (isset($_POST['date_expire'])) ? $_POST['date_expire'] : '';
 						$hour_expire = (isset($_POST['hour_expire'])) ? $_POST['hour_expire'] : '';
+						$badge_code = (isset($_POST['badge_code'])) ? $_POST['badge_code'] : '';
+						$use_badge = (isset($_POST['use_badge'])) ? $_POST['use_badge'] : '';
+						$form = (isset($_POST['form'])) ? $_POST['form'] : '';
 
 						if ($category == 'Promoções' && empty($date_expire) && empty($hour_expire)) {
 							echo json_encode([
@@ -472,7 +478,7 @@
 											]
 										]);
 									} else {
-										$update_promo = $db->prepare("UPDATE cms_news SET title = ?, category = ?, image = ?, timestamp_expire = ?, subtitle = ?, body = ?, is_draft = ? WHERE id = ?");
+										$update_promo = $db->prepare("UPDATE cms_news SET title = ?, category = ?, image = ?, timestamp_expire = ?, subtitle = ?, body = ?, is_draft = ?, form = ?, use_badge = ?, badge = ? WHERE id = ?");
 										$update_promo->bindValue(1, Functions::Filter('article', $title));
 										$update_promo->bindValue(2, $category);
 										$update_promo->bindValue(3, $thumbnail);
@@ -480,7 +486,10 @@
 										$update_promo->bindValue(5, Functions::Filter('article', $subtitle));
 										$update_promo->bindValue(6, Functions::Filter('article', $body));
 										$update_promo->bindValue(7, $draft);
-										$update_promo->bindValue(8, $article_id);
+										$update_promo->bindValue(8, $form);
+										$update_promo->bindValue(9, $use_badge);
+										$update_promo->bindValue(10, $badge_code);
+										$update_promo->bindValue(11, $article_id);
 										$update_promo->execute();
 
 										if ($result_if_exists_article['author'] != $user['id']) {
@@ -1031,6 +1040,8 @@
 		} else if ($order == 'give-rank') {
 			$username = (isset($_POST['username'])) ? $_POST['username'] : '';
 			$rank = (isset($_POST['rank'])) ? $_POST['rank'] : '';
+			$function = (isset($_POST['function'])) ? $_POST['function'] : '';
+			$occult = (isset($_POST['occult'])) ? $_POST['occult'] : '';
 
 			$consultUsername = $db->prepare("SELECT * FROM players WHERE username = ?");
 			$consultUsername->bindValue(1, $username);
@@ -1105,11 +1116,31 @@
 						"text" => 'Parece que ' . $username . ' já possui este cargo' 
 					]
 				]);
+			} else if ($occult == '') {
+				echo json_encode([
+					"response" => 'error',
+					"input" => 'select[name="occult-rank"]',
+					"error" => [
+						"class" => 'div.col-input-separator:nth-child(7) > .error-input-warn',
+						"text" => 'Você precisa escolher se é oculto ou não.' 
+					]
+				]);
+			} else if (strlen($function) > 45) {
+				echo json_encode([
+					"response" => 'error',
+					"input" => 'select[name="function_staff"]',
+					"error" => [
+						"class" => 'div.col-input-separator:nth-child(5) > .error-input-warn',
+						"text" => 'A função deve conter menos de 45 caracteres.' 
+					]
+				]);
 			} else if ($user['username'] == $username) {
 
-				$updateRankUser = $db->prepare("UPDATE players SET rank = ? WHERE username = ?");
+				$updateRankUser = $db->prepare("UPDATE players SET rank = ?, staff_occult = ?, staff_function = ? WHERE username = ?");
 				$updateRankUser->bindValue(1, $rank);
-				$updateRankUser->bindValue(2, $user['username']);
+				$updateRankUser->bindValue(2, $occult);
+				$updateRankUser->bindValue(3, Functions::Filter('xss', $function));
+				$updateRankUser->bindValue(4, $user['username']);
 				$updateRankUser->execute();
 
 				#--------------------------------------------------------------------------------------------------------#
@@ -1124,9 +1155,11 @@
 				]);
 			} else if ($username != $user['username']) {
 
-				$updateRankUser = $db->prepare("UPDATE players SET rank = ? WHERE username = ?");
+				$updateRankUser = $db->prepare("UPDATE players SET rank = ?, staff_occult = ?, staff_function = ? WHERE username = ?");
 				$updateRankUser->bindValue(1, $rank);
-				$updateRankUser->bindValue(2, $username);
+				$updateRankUser->bindValue(2, $occult);
+				$updateRankUser->bindValue(3, Functions::Filter('xss', $function));
+				$updateRankUser->bindValue(4, $username);
 				$updateRankUser->execute();
 
 				#--------------------------------------------------------------------------------------------------------#

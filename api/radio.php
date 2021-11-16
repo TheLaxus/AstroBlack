@@ -1,7 +1,6 @@
 <?php 
 	require_once('../global.php');
 	error_reporting(E_ALL);
-set_time_limit(0);
 
 	header('Content-Type: application/json');
 
@@ -9,32 +8,26 @@ set_time_limit(0);
 		$order = (isset($_POST['order'])) ? $_POST['order'] : '';
 
 		if ($order == 'status') {
-			$url = (isset($_POST['url'])) ? $_POST['url'] : '';
 
 			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, 'https://stream2.svrdedicado.org:7062/index.html');
+			curl_setopt($ch, CURLOPT_URL, 'https://secury.ipstm.net:7022/index.html?sid=1');
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1");
 			$default = curl_exec($ch);
 			$online = 1;
-			$server = strpos($default, 'Server is currently up and public.');
+			$server = strpos($default, 'Stream is currently up');
 
 
 			if ($online == 1) {
 				# Locutor(a)
-				$speaker = explode('Stream Title: </font></td><td><font class=default><b>', $default);
-				$speaker = explode('</b></td></tr>', $speaker[1]);
+				$speaker = explode('<td>Playing Now: </td><td><b><a href="currentsong?sid=1">', $default);
+				$speaker = explode('</a></b></td>', $speaker[1]);
 				$speaker = $speaker[0];
 
-				# Programação
-				$programation = explode('Stream Genre: </font></td><td><font class=default><b>', $default);
-				$programation = explode('</b></td></tr>', $programation[1]);
-				$programation = $programation[0];
-
 				# Ouvintes sintonizados
-				$listeners = explode('listeners (', $default);
-				$listeners = explode(' unique)', $listeners[1]);
+				$listeners = explode('with ', $default);
+				$listeners = explode(' of 699 listeners', $listeners[1]);
 				$listeners = $listeners[0];
 
 				$consult_speaker = $db->prepare("SELECT figure FROM players WHERE username = ? LIMIT 1");
@@ -46,12 +39,15 @@ set_time_limit(0);
 
 					$speaker_look = AVATARIMAGE . 'figure=' . $result_speaker['figure'] . '&headonly=0&size=n&gesture=sml&direction=2&head_direction=3&action=wlk,crr=';
 				} else {
+					$speaker = explode('><td>Stream Name: </td><td><b>', $default);
+					$speaker = explode('</b></td>', $speaker[1]);
+					$speaker = $speaker[0];
+					
 					$speaker_look = '/cdn/assets/img/radio/ghost.png';
 				}
 
-				if ($programation == '') {
-					$programation = 'Tocando as melhores';
-				}
+				$programation = 'Tocando as melhores';
+				
 
 				# Exibição
 				echo json_encode([

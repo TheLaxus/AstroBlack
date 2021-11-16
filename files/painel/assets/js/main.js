@@ -55,7 +55,9 @@ $(document).on('submit', 'form.form-edit-article', function(e) {
 		draft: form.find('select[name="draft"]').val(),
 		form: form.find('select[name="form"]').val(),
 		use_badge: form.find('select[name="use_badge"]').val(),
-		badge_code: form.find('input[name="badgeCod"]').val()
+		badge_code: form.find('input[name="badgeCod"]').val(),
+		form: form.find('select[name="form"]').val()
+
 	}
 
 	$.ajax({
@@ -113,7 +115,9 @@ $(document).on('submit', 'form.form-create-article', function(e) {
 		hour_expire: form.find('input[name="hour-expire"]').val(),
 		draft: form.find('select[name="draft"]').val(),
 		use_badge: form.find('select[name="use_badge"]').val(),
-		badge_code: form.find('input[name="badgeCod"]').val()
+		badge_code: form.find('input[name="badgeCod"]').val(),
+		form: form.find('select[name="form"]').val()
+
 
 	}
 
@@ -438,7 +442,9 @@ $(document).on('submit', 'form.form-give-rank', function(e) {
 	data = {
 		order: 'give-rank',
 		username: form.find('input[name="user-give-rank"]').val(),
-		rank: form.find('select[name="user-rank"]').val()
+		rank: form.find('select[name="user-rank"]').val(),
+		function: form.find('input[name="function_staff"]').val(),
+		occult: form.find('select[name="occult-rank"]').val()
 	}
 
 	$.ajax({

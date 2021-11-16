@@ -3,7 +3,7 @@
 
 	$Panel::Session('disconnected', $result_panel_user['rank']);
 
-	if ($result_panel_user['rank'] < $administrator) {
+	if ($result_panel_user['rank'] < $ceo) {
 		Redirect(URL_PANEL);
 	}
 
@@ -34,7 +34,7 @@
 							<div class="form-warns"></div>
 							<div class="col-input-separator flex-column">
 								<label>
-									<h5 class="fs-14">Cargo</h5>
+									<h5 class="fs-14">Reset Hall do Hotel.</h5>
 								</label>
 								
 								<select class="form-control" name="reset-hall">

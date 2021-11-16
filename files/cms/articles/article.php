@@ -22,7 +22,8 @@
 				$result_article = $consult_articles->fetch(PDO::FETCH_ASSOC);
 
 				if ($result_article['is_draft'] == 1 && $user['rank'] < 7) {
-					$consult_last_no_draft = $db->prepare("SELECT id FROM cms_news WHERE is_draft != 1 ORDER BY timestamp DESC LIMIT 1");
+					$consult_last_no_draft = $db->prepare("SELECT id FROM cms_news WHERE is_draft = ? ORDER BY timestamp DESC LIMIT 1");
+					$consult_last_no_draft->bindValue(1, '0');
 					$consult_last_no_draft->execute();
 
 					$result_last_no_draft = $consult_last_no_draft->fetch(PDO::FETCH_ASSOC);
@@ -113,7 +114,6 @@
 	$Template->AddTemplate('others', 'head');
 
 ?>
-
 <div class="container">
 		<div class="row">
         <div class="col-4">
@@ -183,15 +183,34 @@
 			if ($result_others_articles['id'] == $_GET['article_id']) {
 		?>
 
+<?php 
+	if ($result_others_articles['is_draft'] == 1) {
+		if (isset($user)) { 
+			if (User::userData('rank') >= 7) { ?>
 <?php if ($result_others_articles['timestamp_expire'] > TIME) { ?>
 	<span class='fas fa-circle' style="position:absolute; color: #4CAF50;font-size: 8px;margin-top: 6px;left:22px" title="Promoção ativa"></span>
 	<?php } ?>
+	<li><a class="selected" href='<?= URL . '/article/' . $result_others_articles['id']; ?> '><?= $result_others_articles['title']; ?></a> <br><br></li>
+	<?php } } } else { ?>
+		<?php if ($result_others_articles['timestamp_expire'] > TIME) { ?>
+	<span class='fas fa-circle' style="position:absolute; color: #4CAF50;font-size: 8px;margin-top: 6px;left:22px" title="Promoção ativa"></span>
+	<?php } ?>
 	<li><a class="selected" href='<?= URL . '/article/' . $result_others_articles['id']; ?>'><?= $result_others_articles['title']; ?></a> <br><br></li>
-<?php } else { ?>
+	<?php } ?>
+	<?php } else { ?>
+	<?php if ($result_others_articles['is_draft'] == 1) {
+		if (isset($user)) {
+			if (User::userData('rank') >= 7) { ?>
 	<?php if ($result_others_articles['timestamp_expire'] > TIME) { ?>
 	<span class='fas fa-circle' style="position:absolute; color: #4CAF50;font-size: 8px;margin-top: 6px;left:22px" title="Promoção ativa"></span>
 	<?php } ?>
 	<li><a href='<?= URL . '/article/' . $result_others_articles['id']; ?>' style="margin-left: 12px;"><?= $result_others_articles['title']; ?></a> <br><br></li>
+	<?php } } } else { ?>
+		<?php if ($result_others_articles['timestamp_expire'] > TIME) { ?>
+	<span class='fas fa-circle' style="position:absolute; color: #4CAF50;font-size: 8px;margin-top: 6px;left:22px" title="Promoção ativa"></span>
+	<?php } ?>
+	<li><a href='<?= URL . '/article/' . $result_others_articles['id']; ?>' style="margin-left: 12px;"><?= $result_others_articles['title']; ?></a> <br><br></li>
+		<?php } ?>
 <?php 
 }		
 								}}}
@@ -263,8 +282,13 @@ a {
 										</div>
 										<?php if(isset($user)) { ?>
 											<div class="article-content-react mr-auto-top-bottom flex mr-auto-left" data-article-id="<?= $result_article['id']; ?>">
+												<?php if($consult_liked_article->rowCount() > 0) { ?>
 												<button class="like <?php if ($result_liked_article['state'] == 'like') { ?>active <?php } ?>mr-right-2" data-state="like"></button>
 												<button class="deslike<?php if ($result_liked_article['state'] == 'deslike') { ?> active<?php } ?>" data-state="deslike"></button>
+												<?php } else { ?>
+												<button class="like" mr-right-2" data-state="like"></button>
+												<button class="deslike" data-state="deslike"></button>
+												<?php } ?>
 											</div>
 										<?php } ?>
 									</div>
@@ -398,10 +422,7 @@ a {
 	</div>
 	</div>
 <?php } ?>
-<script type="text/javascript">if (!$(document.body).hasClassName('process-template')) { Rounder.init(); }</script>
-<script type="text/javascript" src="<?= CDN; ?>/assets/js/jquery.js?<?= TIME; ?>"></script>
-<script type="text/javascript" src="<?= CDN; ?>/assets/js/main.js?<?= TIME; ?>"></script>
-<script type="text/javascript" src="<?= CDN; ?>/assets/js/ajax.js?<?= TIME; ?>"></script>	
+
 				
 <?php 
 	$Template->AddTemplate('others', 'bottom'); 

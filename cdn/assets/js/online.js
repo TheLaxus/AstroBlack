@@ -7,7 +7,7 @@ intervalOnlineCountInit = function() {
 
 function SetIntervals() {
 	/* ---------------------------------------------- */
-	intervalOnlineCount = setInterval(intervalOnlineCountInit, 10000);
+	intervalOnlineCount = setInterval(intervalOnlineCountInit, 60000);
 	/* ---------------------------------------------- */
 }
 

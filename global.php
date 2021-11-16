@@ -12,8 +12,8 @@
 	define('SEPARATOR', DIRECTORY_SEPARATOR);
 	define('DIR', __DIR__);
 
-	require_once(DIR . '/core/class/class.core.php');
-	require_once(DIR . '/core/functions.php');
+	require(DIR . '/core/class/class.core.php');
+	require(DIR . '/core/functions.php');
 
 	define('URL', (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https" : "http" . "://" . $_SERVER['HTTP_HOST']);
 	define('URL_ATUAL', (isset($_SERVER['HTTPS'])) && $_SERVER['HTTPS'] === 'on' ? "https" : "http" . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
@@ -29,6 +29,7 @@
     define('USERS', $Functions::Users('online'));
 	define('PATH_BADGEIMAGE', DIR . SEPARATOR . '/swf/c_images/album1584');
 	define('BADGEIMAGE', URL . '/swf/c_images/album1584/%badge%.gif');
+
 
 	$name = "Habbo";
 	$url = $_SERVER["HTTP_HOST"];

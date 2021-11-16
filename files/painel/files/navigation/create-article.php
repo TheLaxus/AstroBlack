@@ -84,7 +84,7 @@
 									<h5 class="fs-14">Corpo na notícia</h5>
 								</label>
 								<div class="article-create-textarea">
-									<textarea name="body"></textarea>
+									<textarea name="body" rows="15" cols="80"></textarea>
 									<script>CKEDITOR.replace('body');</script>
 								</div>
 								<div class="error-input-warn"></div>
@@ -99,14 +99,15 @@
 											<label>
 												<h5 class="fs-14">Data de expiração</h5>
 											</label>
-											<input type="text" name="date-expire" data-toggle="datepicker" placeholder="DD/MM/AAAA" class="expiretime">
+											<input type="text" name="date-expire" autocomplete="off" data-toggle="datepicker" placeholder="DD/MM/AAAA" class="expiretime">
 										</div>
 										<div class="col-input-separator flex-column mr-top-none width-content">
 											<label>
 												<h5 class="fs-14">Hora de expiração</h5>
 											</label>
-											<input type="text" name="hour-expire" placeholder="HH:MM" class="expiretime">
+											<input type="text" name="hour-expire" autocomplete="off" placeholder="HH:MM" class="expiretime">
 										</div>
+
 								<div class="col-input-separator flex-column mr-top-none width-content mr-right-2">
 									<label>
 										<h5 class="fs-14 bold">Usar emblema</h5>
@@ -130,8 +131,18 @@
 									</div>
 									<div class="error-input-warn"></div>
 								</div>
+								<div class="col-input-separator flex-column">
+									<label>
+										<h5 class="fs-14 bold">Formulário</h5>
+										<h6 class="fs-12">Deseja ativar o formulário para esta notícia?.</h6>
+									</label>
+									<select name="form">
+										<option value="0" selected>Não</option>
+										<option value="1">Sim</option>
+									</select>
+									<div class="error-input-warn"></div>
 								</div>
-
+								</div>
 								<div class="col-input-separator flex-column">
 									<label>
 										<h5 class="fs-14 bold">Rascunho</h5>

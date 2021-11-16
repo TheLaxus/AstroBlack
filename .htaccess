@@ -84,3 +84,29 @@ RewriteRule ^api/settings(|/)$ api/actions/settings.php
 RewriteRule ^api/tags(|/)$ api/actions/tags.php
 RewriteRule ^api/reset-password(|/)$ api/actions/reset-password.php
 RewriteRule ^api/radio(|/)$ api/radio.php
+
+
+RewriteRule ^api/online(|/)$ api/get/online.php
+RewriteRule ^api/newsIndex(|/)$ api/get/newsIndex.php
+RewriteRule ^api/hall/diamonds(|/)$ api/get/HallOfFame/getHallDiamonds.php
+RewriteRule ^api/hall/duckets(|/)$ api/get/HallOfFame/getHallDuckets.php
+RewriteRule ^api/hall/crazzies(|/)$ api/get/HallOfFame/getHallCrazzies.php
+RewriteRule ^api/hall/events(|/)$ api/get/HallOfFame/getHallEvents.php
+RewriteRule ^api/hall/promotions(|/)$ api/get/HallOfFame/getHallPoints.php
+
+
+
+# Painel radio
+RewriteRule ^login/?$ painelcrazzy/login.php
+RewriteRule ^inicio/?$ painelcrazzy/index.php
+RewriteRule ^deslogar/?$ painelcrazzy/index.php?deslogar
+RewriteRule ^pagina/([a-z0-9_]+)/desmarcar/([0-9]+)/([0-9]+)/?$ painelcrazzy/index.php?diretorio=$1&tipo=desmarcar&dia=$2&hora=$3
+RewriteRule ^pagina/([a-z0-9_]+)/marcar/([0-9]+)/([0-9]+)/?$ painelcrazzy/index.php?diretorio=$1&tipo=marcar&dia=$2&hora=$3
+RewriteRule ^pagina/([a-z0-9_]+)/apagar/([0-9]+)/?$ painelcrazzy/index.php?diretorio=$1&tipo=apagar&id=$2
+RewriteRule ^pagina/([a-z0-9_]+)/editar/([0-9]+)/?$ painelcrazzy/index.php?diretorio=$1&tipo=editar&id=$2
+RewriteRule ^pagina/([a-z0-9_]+)/adicionar/([0-9]+)/editar/([0-9]+)/?$ painelcrazzy/index.php?diretorio=$1&tipo=adicionar&cargo_id=$2&pag_id=$3
+RewriteRule ^pagina/([a-z0-9_]+)/adicionar/([0-9]+)/?$ painelcrazzy/index.php?diretorio=$1&tipo=adicionar&cargo_id=$2
+RewriteRule ^pagina/([a-z0-9_]+)/criar/?$ painelcrazzy/index.php?diretorio=$1&tipo=criar
+RewriteRule ^pagina/([a-z0-9_]+)/dia/([0-9]+)/?$ painelcrazzy/index.php?diretorio=$1&dia=$2
+RewriteRule ^pagina/([a-z0-9_]+)/lista/([0-9]+)/?$ painelcrazzy/index.php?diretorio=$1&pagina=$2
+RewriteRule ^pagina/([a-z0-9_]+)/?$ painelcrazzy/index.php?diretorio=$1

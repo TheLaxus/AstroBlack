@@ -1,10 +1,11 @@
 <?php 
-	require_once('class.pdo.php');
-	require_once('class.functions.php');
-	require_once('class.hotel.php');
-	require_once('class.security.php');
-	require_once('class.template.php');
-	require_once('class.user.php');
+	require('class.pdo.php');
+	require('class.functions.php');
+	require('class.hotel.php');
+	require('class.security.php');
+	require('class.template.php');
+	require('class.user.php');
+	require('class.api.php');
 
 	$PDO = new Database();
 	$db = $PDO->connection();
@@ -14,5 +15,6 @@
 	$Security = new Security();
 	$Template = new Template();
 	$User = new User();
+	$Api = new Api();
 
 ?>
