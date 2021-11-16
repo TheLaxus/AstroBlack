@@ -20,6 +20,8 @@ RewriteRule ^community(|/)$ files/cms/community/community.php
 RewriteRule ^community/staff(|/)$ files/cms/community/staff.php
 RewriteRule ^community/colab(|/)$ files/cms/community/colaboracao.php
 RewriteRule ^hall(|/)$ files/cms/community/fama.php
+RewriteRule ^shop/buy(|/)$ files/cms/shop/vip.php
+RewriteRule ^community/vips(|/)$ files/cms/shop/vips.php
 
 RewriteRule ^hall/economy(|/)$ files/cms/community/fama.php
 RewriteRule ^hall/activity(|/)$ files/cms/community/fama-atv.php

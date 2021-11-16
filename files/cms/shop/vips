@@ -1,0 +1,78 @@
+<?php
+require_once('../../../global.php');
+
+$Hotel::Manutention($user['rank']);
+$Functions::Session('disconnected');
+
+$Template->SetParam('page_id', 'vips');
+$Template->SetParam('page_name', 'Membros VIP');
+$Template->SetParam('page_title', 'Membros VIP - ' . HOTELNAME);
+$Template->SetParam('page_description', '');
+$Template->SetParam('page_image', URL . '/image.png');
+
+$Template->AddTemplate('others', 'head');
+?>
+<div class="container">
+    <div class="column">
+        <div class="row">
+            <div class="col-6">
+                <div id="content-box">
+                    <div class="title-box png20">
+                        <div class="title">Membros VIP</div>
+                    </div>
+                    <?php
+                    $consult_staff_role = $db->prepare("SELECT id,username,figure,online,motto,staff_function,last_online FROM players WHERE rank = ? AND staff_occult = ?");
+                    $consult_staff_role->bindValue(1, '2');
+                    $consult_staff_role->bindValue(2, '0');
+                    $consult_staff_role->execute();
+
+                    if ($consult_staff_role->rowCount() > 0) {
+                        while ($result_staff_role = $consult_staff_role->fetch(PDO::FETCH_ASSOC)) {
+                    ?>
+                            <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
+                                <div class="bg" style="height:82px"></div>
+                                <div class="overlay">
+                                    <div style="background:url('<?= AVATARIMAGE . $result_staff_role['figure']; ?>&action=sml&direction=2&head_direction=2&gesture=sml&size=1&img_format=gif');margin:-10px 0px 0px 0px;float:left;height:91px;width:64px"></div>
+
+                                    <font style="font-size:15px;top:16px;left:1px" class="username"><?= $result_staff_role['username'] ?></font>
+                                    </b>
+                                    <?php if ($result_staff_role['online'] == 1) { ?>
+                                        <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/online.gif'><br><br>
+                                    <?php } else { ?>
+                                        <img style="float: right;padding:14px;" src='<?= CDN; ?>/assets/img/offline.gif'><br><br>
+                                    <?php } ?>
+                                    <div style="width:100%;max-width:76%;overflow: hidden;white-space: nowrap;font-size:11px;top:-2px;left:1px;">
+                                        <b>Missão:</b> <?= $result_staff_role['motto'] ?><br />
+                                        <b>Última conexão:</b> <?= Functions::userSettingsById('hide_last_online', $result_staff_role['id']) == '0' ? date("d/m/Y H:i", $result_staff_role['last_online']) : '--/--/----' ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                    } else { ?>
+                        <div id="content-box" class="profile" style="height:82px;margin-bottom:4px">
+                            <div class="bg" style="height:82px"></div>
+                            <div class="overlay">
+                                <div class="username" style="font-size:14px;top:30px">
+                                    Esta categoria encontra-se sem membros.
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="col-6">
+                <div id="content-box">
+                    <div class="title-box png20">
+                        <div class="title">Membros VIP</div>
+                    </div>
+                    <div style="padding:16px">
+                        Os membros VIP são usuários que adquirem um produto especial na nossa loja, visando ajudar o hotel a crescer!
+                    </div>
+                </div>
+            </div>
+
+            <?php
+            $Template->AddTemplate('others', 'bottom');
+            ?>
