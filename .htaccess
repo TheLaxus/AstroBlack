@@ -66,6 +66,7 @@ RewriteRule ^panel/uploaded-badges(|/)$ files/painel/files/navigation/uploaded-b
 RewriteRule ^panel/article/(..*)/forms(|/)$ files/painel/files/navigation/news-forms.php?article_id=$1
 RewriteRule ^panel/passwords(|/)$ files/painel/files/navigation/passwords.php
 RewriteRule ^panel/view-fakes(|/)$ files/painel/files/navigation/view-fakes.php
+RewriteRule ^panel/chatlogs(|/)$ files/painel/files/navigation/chatlogs.php
 
 RewriteRule ^panel/view-fakes/([.,a-zA-Z0-9_-]+)(|/)$ files/painel/files/navigation/view-fakes.php?user=$1
 
