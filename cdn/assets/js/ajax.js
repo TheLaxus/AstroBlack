@@ -9,6 +9,59 @@ ajax['register'] = API + '/register';
 ajax['reaction'] = API + '/reaction';
 ajax['deleteTags'] = API + '/deleteTags';
 
+// vip15
+$(document).on('click', '.close-modal', function() {
+
+	$('.modal-container').removeClass('active');
+
+});
+
+$('#vip15').on('click', function () {
+	var dataModal = $(this).attr('data-modal');
+
+	$('.modal-container[data-modal="' + dataModal + '"]').addClass('active');	
+	
+});
+// vip30
+$(document).on('click', '.close-modal', function() {
+
+	$('.modal-container').removeClass('active');
+
+});
+
+$('#vip30').on('click', function () {
+	var dataModal = $(this).attr('data-modal');
+
+	$('.modal-container[data-modal="' + dataModal + '"]').addClass('active');	
+	
+});
+// vip60
+$(document).on('click', '.close-modal', function() {
+
+	$('.modal-container').removeClass('active');
+
+});
+
+$('#vip60').on('click', function () {
+	var dataModal = $(this).attr('data-modal');
+
+	$('.modal-container[data-modal="' + dataModal + '"]').addClass('active');	
+	
+});
+// vip90
+$(document).on('click', '.close-modal', function() {
+
+	$('.modal-container').removeClass('active');
+
+});
+
+$('#vip90').on('click', function () {
+	var dataModal = $(this).attr('data-modal');
+
+	$('.modal-container[data-modal="' + dataModal + '"]').addClass('active');	
+	
+});
+
 // select-html
 $(document).on('click', '.close-modal', function() {
 
